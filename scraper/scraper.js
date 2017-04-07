@@ -81,19 +81,14 @@ function parsePlayerStatsFromGameReport({ liveData: { boxscore: { teams } } }) {
 const flattenSchedule = scheduleData =>
    scheduleData.dates.reduce((result, date) => [...result, ...date.games], []);
 
-const transformScheduleGame = ({ gamePk: id, gameDate, status, teams }) => {
-   const gameStartTime = moment.utc(gameDate);
-   const completed = status.abstractGameState === 'Final';
-   return {
-      id,
-      // TODO: What is the game state for active games?
-      active: moment.utc().after(gameStartTime) && !completed,
-      completed,
-      teams: {
-         away: NHL.teamKeys[teams.away.team.id],
-         home: NHL.teamKeys[teams.home.team.id],
-      },
-      gameDateLocal: moment(gameDate).format('YYYY-MM-DD'),
-      gameTime: gameStartTime.format('YYYY-MM-DDTHH:mm'),
-   };
-};
+const transformScheduleGame = ({ gamePk: id, gameDate, status, teams }) => ({
+   id,
+   active: status.abstractGameState === 'Live',
+   completed: status.abstractGameState === 'Final',
+   teams: {
+      away: NHL.teamKeys[teams.away.team.id],
+      home: NHL.teamKeys[teams.home.team.id],
+   },
+   gameDateLocal: moment(gameDate).format('YYYY-MM-DD'),
+   gameTime: moment.utc(gameDate).format('YYYY-MM-DDTHH:mm'),
+});

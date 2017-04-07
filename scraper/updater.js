@@ -21,5 +21,16 @@ export async function updateSchedule(year, season) {
 }
 
 export async function updateActiveGames() {
-
+   info('Updating active games...');
+   const games = await dao.loadActiveGames();
+   if (!games.length) {
+      info('No active games.');
+   } else {
+      info('Active games:');
+      games.forEach(game => {
+         // TODO: Log game teams and id
+      });
+   }
+   // TODO: Get list of active game ids
+   // TODO: Load and save stats for all active games
 }

@@ -7,7 +7,11 @@ import Team from '../components/Tree/Team';
 
 const TreeRoot = styled.div`
    display: flex;
-   justify-content: space-between;
+   justify-content: space-around;
+
+   @media(max-width: 64em) {
+      justify-content: space-between;
+   }
 `;
 
 export default class Tree extends Component {
@@ -18,8 +22,8 @@ export default class Tree extends Component {
    render() {
       return (
          <TreeRoot>
-            <Conference name="Western">
-               <Division name="Central">
+            <Conference id="W">
+               <Division id="C">
                   <Series>
                      <Team id="CHI" seed={1} />
                      <Team id="NSH" seed={4} />
@@ -29,7 +33,7 @@ export default class Tree extends Component {
                      <Team id="STL" seed={3} />
                   </Series>
                </Division>
-               <Division name="Pacific">
+               <Division id="P">
                   <Series>
                      <Team id="ANA" seed={1} />
                      <Team id="CGY" seed={4} />
@@ -40,8 +44,8 @@ export default class Tree extends Component {
                   </Series>
                </Division>
             </Conference>
-            <Conference name="Eastern" right>
-               <Division name="Atlantic">
+            <Conference id="E" right>
+               <Division id="A">
                   <Series>
                      <Team id="MTL" seed={1} />
                      <Team id="NYR" seed={4} />
@@ -51,7 +55,7 @@ export default class Tree extends Component {
                      <Team id="BOS" seed={3} />
                   </Series>
                </Division>
-               <Division name="Metropolitan">
+               <Division id="M">
                   <Series>
                      <Team id="WSH" seed={1} />
                      <Team id="TOR" seed={4} />

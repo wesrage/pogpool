@@ -5,11 +5,13 @@ export const conferenceKeys = {
 
 export const conferences = {
    E: {
-      fullName: 'Eastern',
+      fullName: 'Eastern Conference',
+      shortName: 'East',
       divisions: ['A', 'M'],
    },
    W: {
-      fullName: 'Western',
+      fullName: 'Western Conference',
+      shortName: 'West',
       divisions: ['C', 'P'],
    },
 };
@@ -23,16 +25,20 @@ export const divisionKeys = {
 
 export const divisions = {
    A: {
-      fullName: 'Atlantic',
+      fullName: 'Atlantic Division',
+      shortName: 'Atlantic',
    },
    C: {
-      fullName: 'Central',
+      fullName: 'Central Division',
+      shortName: 'Central',
    },
    M: {
-      fullName: 'Metropolitan',
+      fullName: 'Metropolitan Division',
+      shortName: 'Metropolitan',
    },
    P: {
-      fullName: 'Pacific',
+      fullName: 'Pacific Division',
+      shortName: 'Pacific',
    },
 };
 

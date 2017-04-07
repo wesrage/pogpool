@@ -2,7 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import styled from 'styled-components';
 
 const SeriesRoot = styled.div`
-   padding-bottom: 0.5em;
+   &:not(:last-child) {
+      padding-bottom: 1em;
+   }
 `;
 
 export default class Series extends Component {

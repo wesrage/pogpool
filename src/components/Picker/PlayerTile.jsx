@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import styled, { keyframes } from 'styled-components';
+import Media from 'react-media';
 import Done from 'react-icons/lib/md/done';
 import Logo from '../Logo';
 import colors from '../../common/colors';
@@ -12,7 +13,7 @@ const Headshot = styled.img`
 const Tile = styled.div`
    display: flex;
    flex-direction: column;
-   width: 80%;
+   width: calc(100% - 2em);
    margin: 0 auto;
    justify-content: space-around;
    filter: ${props => props.otherSelected ? 'grayscale(100%)' : 'none'};
@@ -21,14 +22,22 @@ const Tile = styled.div`
    box-shadow: ${props => props.selected ? '3px 3px 15px #888' : '1px 1px 5px #888'};
    transform: scale(${props => props.selected ? 1.05 : 1});
    transition: all 200ms;
-   border-radius: 3px;
+   border-radius: 0.25em;
    position: relative;
 
    &:hover {
       opacity: 1;
       transform: scale(1.05);
-      box-shadow: 3px 3px 15px #888;
+      box-shadow: 0.25em 0.25em 1em #888;
       filter: none;
+   }
+
+   @media(max-width: 64em) {
+      width: calc(100% - 1em);
+   }
+
+   @media(max-width: 45em) {
+      width: calc(100% - 0.5em);
    }
 `;
 
@@ -38,16 +47,62 @@ const Info = styled.div`
    display: flex;
    align-items: center;
    height: 2.5em;
-   border-radius: 0 0 3px 3px;
+   border-radius: 0 0 0.125em 0.125em;
+
+   @media(max-width: 64em) {
+      height: 1.5em;
+   }
+
+   @media(max-width: 45em) {
+      padding: 0 0.5em;
+      text-align: center;
+   }
+
+   @media(max-width: 30em) {
+      padding: 0 0.25em;
+   }
 `;
 
 const Team = styled.div`
-   padding-left: 0.5em;
+   padding-left: 0.25em;
 `;
 
-const Name = styled.div`
+const AbsoluteLogoWrapper = styled.div`
+   position: absolute;
+   top: 0.25em;
+   left: 0.25em;
+`;
+
+const Name = styled.span`
    color: #fff;
-   font-size: 0.7em;
+   font-size: 1em;
+   padding: 0 0.25em;
+   width: 100%;
+
+   @media(max-width: 90em) {
+      font-size: 0.8em;
+   }
+
+   @media(max-width: 80em) {
+      font-size: 0.7em;
+   }
+
+   @media(max-width: 64em) {
+      font-size: 0.6em;
+   }
+
+   @media(max-width: 45em) {
+      font-size: 0.6em;
+      text-align: center;
+   }
+
+   @media(max-width: 30em) {
+      font-size: 0.5em;
+   }
+
+   @media(max-width: 24em) {
+      font-size: 0.45em;
+   }
 `;
 
 const checkAnimation = keyframes`
@@ -64,7 +119,7 @@ const checkAnimation = keyframes`
    }
 `;
 
-const selectedAnimation = keyframes`
+const selectedAnimationLarge = keyframes`
    from {
       width: 0;
       height: 0;
@@ -76,17 +131,35 @@ const selectedAnimation = keyframes`
    }
 `;
 
+const selectedAnimationSmall = keyframes`
+   from {
+      width: 0;
+      height: 0;
+   }
+
+   to {
+      width: 1.5em;
+      height: 1.5em;
+   }
+`;
+
 const SelectedRoot = styled.div`
    position: absolute;
    top: 0;
    right: 0;
    height: 2em;
    width: 2em;
+   animation: ${selectedAnimationLarge} 100ms;
    background-color: #4885ed;
    display: flex;
    align-items: center;
    justify-content: center;
-   animation: ${selectedAnimation} 100ms;
+
+   @media(max-width: 64em) {
+      height: 1.5em;
+      width: 1.5em;
+      animation: ${selectedAnimationSmall} 100ms;
+   }
 `;
 
 const AnimatedCheck = styled(Done)`
@@ -95,7 +168,12 @@ const AnimatedCheck = styled(Done)`
 
 const Selected = () => (
    <SelectedRoot>
-      <AnimatedCheck size="1.5em" color="#fff" />
+      <Media query="(max-width: 64em)">
+         {matches =>
+            matches
+               ? <AnimatedCheck size="1em" color="#fff" />
+               : <AnimatedCheck size="1.5em" color="#fff" />}
+      </Media>
    </SelectedRoot>
 );
 
@@ -123,11 +201,20 @@ export default class PlayerTile extends Component {
            onClick={() => this.props.onSelect(id)}
          >
             <Headshot alt={`${fullDisplayName} Headshot`} src={headshotImageUrl} />
+            <Media query="(max-width: 45em)">
+               {matches =>
+                  matches && <AbsoluteLogoWrapper><Logo team={team} /></AbsoluteLogoWrapper>}
+            </Media>
             <Info color={colors[team][0]}>
-               <Team>
-                  <Logo team={team} />
-               </Team>
-               <Name>{lastName.toUpperCase()}, {firstName}</Name>
+               <Media query="(max-width: 45em)">
+                  {matches =>
+                     !matches &&
+                     <Team>
+                        <Logo team={team} />
+                     </Team>}
+               </Media>
+               {/* <Name>{lastName.toUpperCase()}, {firstName}</Name> */}
+               <Name>{fullDisplayName}</Name>
             </Info>
             {selected && <Selected />}
          </Tile>

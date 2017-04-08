@@ -34,10 +34,22 @@ const Tile = styled.div`
 
    @media(max-width: 64em) {
       width: calc(100% - 1em);
+
+      .logo {
+         width: 1.5em;
+         height: 1em;
+      }
    }
 
    @media(max-width: 45em) {
       width: calc(100% - 0.5em);
+   }
+
+   @media(max-width: 30em) {
+      .logo {
+         width: 1em;
+         height: 0.75em;
+      }
    }
 `;
 
@@ -221,7 +233,6 @@ export default class PlayerTile extends Component {
 
    render() {
       const { id, firstName, lastName, team, selected, otherSelected } = this.props;
-      // const fullName = `${lastName.toUpperCase()}, ${firstName}`;
       const fullDisplayName = `${firstName} ${lastName}`;
       const headshotImageUrl = `https://nhl.bamcontent.com/images/headshots/current/168x168/${id}@2x.jpg`;
       return (
@@ -243,7 +254,6 @@ export default class PlayerTile extends Component {
                         <Logo team={team} />
                      </Team>}
                </Media>
-               {/* <Name>{lastName.toUpperCase()}, {firstName}</Name> */}
                <Name>{fullDisplayName}</Name>
             </Info>
             {selected && <Selected />}

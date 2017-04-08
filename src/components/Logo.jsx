@@ -8,19 +8,9 @@ const LogoDiv = styled.div`
    background-repeat: no-repeat;
    width: 3em;
    height: 2em;
-
-   @media(max-width: 64em) {
-      width: 1.5em;
-      height: 1em;
-   }
-
-   @media(max-width: 30em) {
-      width: 1em;
-      height: 0.75em;
-   }
 `;
 
-const Logo = ({ dark, team }) => <LogoDiv image={dark ? logos.dark[team] : logos.light[team]} />;
+const Logo = ({ dark, team }) => <LogoDiv className="logo" image={dark ? logos.dark[team] : logos.light[team]} />;
 
 Logo.propTypes = {
    dark: PropTypes.bool,

@@ -20,10 +20,15 @@ const LogoDiv = styled.div`
    }
 `;
 
-const Logo = ({ team }) => <LogoDiv image={logos[team]} />;
+const Logo = ({ dark, team }) => <LogoDiv image={dark ? logos.dark[team] : logos.light[team]} />;
 
 Logo.propTypes = {
+   dark: PropTypes.bool,
    team: PropTypes.oneOf(Object.keys(teams)).isRequired,
+};
+
+Logo.defaultProps = {
+   dark: false,
 };
 
 export default Logo;

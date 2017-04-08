@@ -10,6 +10,10 @@ const Root = styled.div`
 
    &:not(:last-child) {
       padding-bottom: 2em;
+
+      @media(max-width: 45em) {
+          padding-bottom: 1em;
+      }
    }
 `;
 

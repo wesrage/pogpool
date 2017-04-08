@@ -20,7 +20,7 @@ const Tile = styled.div`
    opacity: ${props => props.selected ? 1 : 0.8};
    cursor: pointer;
    box-shadow: ${props => props.selected ? '3px 3px 15px #888' : '1px 1px 5px #888'};
-   transform: scale(${props => props.selected ? 1.05 : 1});
+   transform: scale(${props => props.selected ? 1.05 : props.otherSelected ? 0.9 : 1});
    transition: all 200ms;
    border-radius: 0.25em;
    position: relative;
@@ -71,6 +71,11 @@ const AbsoluteLogoWrapper = styled.div`
    position: absolute;
    top: 0.25em;
    left: 0.25em;
+
+   @media(max-width: 30em) {
+       top: 0.125em;
+       left: 0;
+   }
 `;
 
 const Name = styled.span`
@@ -131,7 +136,7 @@ const selectedAnimationLarge = keyframes`
    }
 `;
 
-const selectedAnimationSmall = keyframes`
+const selectedAnimationMedium = keyframes`
    from {
       width: 0;
       height: 0;
@@ -140,6 +145,18 @@ const selectedAnimationSmall = keyframes`
    to {
       width: 1.5em;
       height: 1.5em;
+   }
+`;
+
+const selectedAnimationSmall = keyframes`
+   from {
+      width: 0;
+      height: 0;
+   }
+
+   to {
+      width: 1em;
+      height: 1em;
    }
 `;
 
@@ -158,22 +175,35 @@ const SelectedRoot = styled.div`
    @media(max-width: 64em) {
       height: 1.5em;
       width: 1.5em;
+      animation: ${selectedAnimationMedium} 100ms;
+   }
+
+   @media(max-width: 30em) {
+      height: 1em;
+      width: 1em;
       animation: ${selectedAnimationSmall} 100ms;
    }
 `;
 
 const AnimatedCheck = styled(Done)`
+   height: 1.5em;
+   width: 1.5em;
    animation: ${checkAnimation} 300ms;
+
+   @media(max-width: 64em) {
+      height: 1em;
+      width: 1em;
+   }
+
+   @media(max-width: 30em) {
+      height: 0.75em;
+      width: 0.75em;
+   }
 `;
 
 const Selected = () => (
    <SelectedRoot>
-      <Media query="(max-width: 64em)">
-         {matches =>
-            matches
-               ? <AnimatedCheck size="1em" color="#fff" />
-               : <AnimatedCheck size="1.5em" color="#fff" />}
-      </Media>
+      <AnimatedCheck color="#fff" />
    </SelectedRoot>
 );
 
@@ -203,7 +233,7 @@ export default class PlayerTile extends Component {
             <Headshot alt={`${fullDisplayName} Headshot`} src={headshotImageUrl} />
             <Media query="(max-width: 45em)">
                {matches =>
-                  matches && <AbsoluteLogoWrapper><Logo team={team} /></AbsoluteLogoWrapper>}
+                  matches && <AbsoluteLogoWrapper><Logo team={team} dark /></AbsoluteLogoWrapper>}
             </Media>
             <Info color={colors[team][0]}>
                <Media query="(max-width: 45em)">

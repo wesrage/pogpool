@@ -1,13 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import styled from 'styled-components';
 import Media from 'react-media';
+import { H3 } from '../../components/styled';
 import { divisions } from '../../../scraper/nhl';
 
 const divisionIds = Object.keys(divisions);
 
 const DivisionRoot = styled.div``;
 
-const Name = styled.h2`
+const Name = styled(H3)`
    font-size: 1em;
    text-align: ${props => props.right ? 'right' : 'left'};
 `;

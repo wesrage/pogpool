@@ -5,7 +5,7 @@ import Tree from './Tree';
 
 const App = () => (
    <div>
-      <Route path="/tree" component={Tree} />
+      <Route path="/" component={Tree} />
       <Route path="/" component={Picker} />
    </div>
 );

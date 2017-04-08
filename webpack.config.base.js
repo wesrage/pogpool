@@ -23,6 +23,9 @@ export default {
                      'react',
                      'stage-0',
                   ],
+                  plugins: [
+                     'transform-decorators-legacy',
+                  ],
                   env: {
                      development: {
                         presets: ['react-hmre'],

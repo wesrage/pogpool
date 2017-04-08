@@ -1,27 +1,36 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import PlayerGroup from '../components/Picker/PlayerGroup';
 import TeamGroup from '../components/Picker/TeamGroup';
 import CupGroup from '../components/Picker/CupGroup';
 import { H1, Annotation } from '../components/styled';
+import { makeSelection, removeSelection } from '../store/picks';
 import groups from '../groups';
 
 const PickerRoot = styled.div``;
 
+@connect(
+   state => ({
+      picks: state.picks,
+   }),
+   { makeSelection, removeSelection },
+)
 export default class Picker extends Component {
-   state = {
-      picks: {},
+   static propTypes = {
+      picks: PropTypes.shape().isRequired,
+      makeSelection: PropTypes.func.isRequired,
+      removeSelection: PropTypes.func.isRequired,
    };
 
    handleSelect = groupId =>
-      playerId => {
-         this.setState(state => ({
-            picks: {
-               ...state.picks,
-               [groupId]: state.picks[groupId] !== playerId ? playerId : null,
-            },
-         }));
+      pickId => {
+         if (this.props.picks[groupId] === pickId) {
+            this.props.removeSelection(groupId);
+         } else {
+            this.props.makeSelection(groupId, pickId);
+         }
       };
 
    renderPlayerGroup = ({ id, players }) => (
@@ -30,7 +39,7 @@ export default class Picker extends Component {
         id={id}
         players={players}
         onSelect={this.handleSelect(id)}
-        selection={this.state.picks[id]}
+        selection={this.props.picks[id]}
       />
    );
 
@@ -40,7 +49,7 @@ export default class Picker extends Component {
         id={id}
         teams={teams}
         onSelect={this.handleSelect(id)}
-        selection={this.state.picks[id]}
+        selection={this.props.picks[id]}
       />
    );
 
@@ -50,7 +59,7 @@ export default class Picker extends Component {
         id={id}
         teams={teams}
         onSelect={this.handleSelect(id)}
-        selection={this.state.picks[id]}
+        selection={this.props.picks[id]}
       />
    );
 

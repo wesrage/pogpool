@@ -7,6 +7,7 @@ import {
 } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
+import persistState from 'redux-localstorage';
 import rootReducer from './rootReducer';
 
 export function configureStore(initialState) {
@@ -21,6 +22,7 @@ export function configureStore(initialState) {
       initialState,
       composeEnhancers(
          applyMiddleware(...middlewares),
+         persistState('picks'),
       ),
    );
 

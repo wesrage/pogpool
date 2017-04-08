@@ -47,7 +47,7 @@ const GroupId = styled.div`
 export default class CupGroup extends Component {
    static propTypes = {
       id: PropTypes.string.isRequired,
-      selection: PropTypes.number,
+      selection: PropTypes.string,
       teams: PropTypes.arrayOf(PropTypes.shape(teamPropType)).isRequired,
       onSelect: PropTypes.func.isRequired,
    };

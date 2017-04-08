@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import substore from './substore';
+import picks from './picks';
 
 export default combineReducers({
-   substore,
+   picks,
 });

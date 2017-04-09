@@ -31,7 +31,8 @@
       "command": "node api",
       "env": {
         "API_HOST": "localhost",
-        "API_PORT": 3030
+        "API_PORT": 3030,
+        "HTTP_HOST": "http://localhost:3000"
       }
     },
     "prod-api": {
@@ -39,6 +40,7 @@
       "env": {
         "API_HOST": "localhost",
         "API_PORT": 8080,
+        "HTTP_HOST": "http://w.esley.ca",
         "NODE_ENV": "production"
       }
     }
@@ -85,6 +87,7 @@
     "body-parser": "^1.15.2",
     "compression": "^1.6.2",
     "concurrently": "^2.2.0",
+    "cors": "^2.8.3",
     "css-loader": "^0.26.0",
     "eslint-plugin-babel": "^3.3.0",
     "express": "^4.14.1",

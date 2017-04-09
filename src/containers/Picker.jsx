@@ -6,8 +6,9 @@ import PlayerGroup from '../components/Picker/PlayerGroup';
 import TeamGroup from '../components/Picker/TeamGroup';
 import CupGroup from '../components/Picker/CupGroup';
 import LabelledInput from '../components/LabelledInput';
+import Button from '../components/Button';
 import { H1, Annotation } from '../components/styled';
-import { makeSelection, removeSelection } from '../store/picks';
+import { makeSelection, removeSelection, submit } from '../store/picks';
 import { changeField } from '../store/user';
 import groups from '../groups';
 
@@ -22,7 +23,7 @@ const InformationSection = styled.div`
       picks: state.picks,
       user: state.user,
    }),
-   { makeSelection, removeSelection, changeField },
+   { makeSelection, removeSelection, submit, changeField },
 )
 export default class Picker extends Component {
    static propTypes = {
@@ -33,6 +34,7 @@ export default class Picker extends Component {
       }),
       makeSelection: PropTypes.func.isRequired,
       removeSelection: PropTypes.func.isRequired,
+      submit: PropTypes.func.isRequired,
       changeField: PropTypes.func.isRequired,
    };
 
@@ -118,6 +120,8 @@ export default class Picker extends Component {
             <H1>Stanley Cup Champion</H1>
             <Annotation>Stanley Cup Championship = 20 points</Annotation>
             {cupGroups.map(this.renderCupGroup)}
+
+            <Button onClick={this.props.submit}>Submit</Button>
          </PickerRoot>
       );
    }

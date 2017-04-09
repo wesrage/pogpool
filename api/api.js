@@ -1,12 +1,20 @@
 /* eslint-disable no-console */
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
+import compression from 'compression';
 import { createRoutes } from './routes';
 
 const { API_HOST, API_PORT } = process.env;
 
 const app = express();
-
+app.use(compression());
+app.use(
+   cors({
+      origin: process.env.HTTP_HOST,
+      optionsSuccessStatus: 200,
+   }),
+);
 app.use(bodyParser.json());
 
 createRoutes(app);
@@ -16,7 +24,7 @@ app.use((req, res) => {
 });
 
 if (API_PORT) {
-   app.listen(API_PORT, (err) => {
+   app.listen(API_PORT, err => {
       if (err) {
          console.error(err);
       }

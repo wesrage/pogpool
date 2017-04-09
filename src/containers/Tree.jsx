@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import Conference from '../components/Tree/Conference';
 import Division from '../components/Tree/Division';
@@ -6,17 +6,40 @@ import Series from '../components/Tree/Series';
 import Team from '../components/Tree/Team';
 import { H1 } from '../components/styled';
 
+const DisplayToggleWrapper = styled.div`
+   text-align: center;
+`;
+
+const DisplayToggle = styled.button`
+
+`;
+
 const TreeRoot = styled.div`
    display: flex;
    justify-content: space-around;
-
-   @media(max-width: 64em) {
-      justify-content: space-between;
-   }
 `;
 
 export default class Tree extends Component {
+   state = { show: false };
+
+   toggleVisibility = () => {
+      this.setState(state => ({
+         show: !state.show,
+      }));
+   };
+
+   DisplayToggle = () => (
+      <DisplayToggleWrapper>
+         <DisplayToggle onClick={this.toggleVisibility}>
+            {this.state.show ? 'Hide' : 'View'} Matchups
+         </DisplayToggle>
+      </DisplayToggleWrapper>
+   );
+
    render() {
+      if (!this.state.show) {
+         return <this.DisplayToggle/>;
+      }
       return (
          <div>
             <H1>Matchups</H1>
@@ -66,6 +89,7 @@ export default class Tree extends Component {
                   </Division>
                </Conference>
             </TreeRoot>
+            <this.DisplayToggle/>
          </div>
       );
    }

@@ -77,6 +77,7 @@ const Name = styled.span`
    font-size: 1em;
    padding: 0 0.5em;
    width: 100%;
+   user-select: none;
 
    @media(max-width: 90em) {
       font-size: 0.8em;

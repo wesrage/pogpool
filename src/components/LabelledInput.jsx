@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import uuid from 'uuid';
 
 const Wrapper = styled.div`
-   ${''/* display: flex; */}
    margin-bottom: 0.125em;
 `;
 
@@ -29,6 +28,11 @@ export default class LabelledInput extends Component {
    static propTypes = {
       id: PropTypes.string,
       label: PropTypes.string,
+      value: PropTypes.string,
+   };
+
+   static defaultProps = {
+      value: '',
    };
 
    id = uuid.v1();

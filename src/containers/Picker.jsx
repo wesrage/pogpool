@@ -14,7 +14,8 @@ import groups from '../groups';
 
 const PickerRoot = styled.div``;
 
-const InformationSection = styled.div`
+const Centered = styled.div`
+   padding-bottom: 1em;
    text-align: center;
 `;
 
@@ -50,6 +51,8 @@ export default class Picker extends Component {
    handleInputChange = ({ target: { name, value } }) => {
       this.props.changeField({ name, value });
    };
+
+   validate = () => this.props.user.firstName && this.props.user.lastName && groups.every(group => this.props.picks[group.id]);
 
    renderPlayerGroup = ({ id, players }) => (
       <PlayerGroup
@@ -93,7 +96,7 @@ export default class Picker extends Component {
             </Helmet>
 
             <H1>Your Information</H1>
-            <InformationSection>
+            <Centered>
                <LabelledInput
                  label="First Name"
                  name="firstName"
@@ -106,7 +109,7 @@ export default class Picker extends Component {
                  value={this.props.user.lastName}
                  onChange={this.handleInputChange}
                />
-            </InformationSection>
+            </Centered>
 
             <H1>Players</H1>
             <Annotation>1 point = 1 point</Annotation>
@@ -121,7 +124,9 @@ export default class Picker extends Component {
             <Annotation>Stanley Cup Championship = 20 points</Annotation>
             {cupGroups.map(this.renderCupGroup)}
 
-            <Button onClick={this.props.submit}>Submit</Button>
+            <Centered>
+               <Button disabled={!this.validate()} onClick={this.props.submit}>Submit</Button>
+            </Centered>
          </PickerRoot>
       );
    }

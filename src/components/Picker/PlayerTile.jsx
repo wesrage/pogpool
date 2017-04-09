@@ -19,9 +19,13 @@ const TileWrapper = styled.div`
          height: 1em;
       }
 
+      @media(max-width: 45em) {
+         padding: 0;
+      }
+
       @media(max-width: 30em) {
          width: 1em;
-         height: 0.75em;
+         left: -0.25em;
       }
    }
 `;
@@ -57,9 +61,14 @@ const AbsoluteLogoWrapper = styled.div`
    top: 0.25em;
    left: 0.25em;
 
-   @media(max-width: 30em) {
+   @media(max-width: 45em) {
        top: 0.125em;
-       left: 0;
+       left: 0.125em;
+   }
+
+   @media(max-width: 30em) {
+      left: 0;
+      top: 0;
    }
 `;
 

@@ -6,6 +6,7 @@ import { teams } from '../../scraper/nhl';
 const LogoDiv = styled.img`
    width: ${props => props.full ? '100%' : '3em'};
    height: ${props => props.full ? '100%' : '2em'};
+   padding-top: ${props => props.full ? 0 : '0.25em'};
 `;
 
 const Logo = ({ dark, team, full }) => (

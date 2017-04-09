@@ -12,7 +12,7 @@ const Headshot = styled.img`
 
 const TileWrapper = styled.div`
    width: 15vw;
-   
+
    .logo {
       @media(max-width: 64em) {
          width: 1.5em;
@@ -66,7 +66,7 @@ const AbsoluteLogoWrapper = styled.div`
 const Name = styled.span`
    color: #fff;
    font-size: 1em;
-   padding: 0 0.25em;
+   padding: 0 0.5em;
    width: 100%;
 
    @media(max-width: 90em) {

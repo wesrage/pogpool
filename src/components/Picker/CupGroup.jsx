@@ -8,7 +8,16 @@ const Root = styled.div`
    justify-content: space-around;
    flex-flow: row wrap;
    display: flex;
-   width: 100%;
+   width: 50%;
+   margin: 0 auto;
+
+   @media(max-width: 45em) {
+      width: 75%;
+   }
+
+   @media(max-width: 30em) {
+      width: 100%;
+   }
 
    &:not(:last-child) {
       padding-bottom: 2em;

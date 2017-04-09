@@ -5,7 +5,6 @@ import Done from 'react-icons/lib/md/done';
 const TileRoot = styled.div`
    display: flex;
    flex-direction: column;
-   ${''/* width: calc(100% - 2em); */}
    width: 100%;
    margin: 0 auto;
    filter: ${props => props.otherSelected ? 'grayscale(100%)' : 'none'};
@@ -123,14 +122,20 @@ const Selected = () => (
    </SelectedRoot>
 );
 
-const Tile = ({ selected, otherSelected, onClick, children }) => (
-   <TileRoot selected={selected} otherSelected={otherSelected} onClick={onClick}>
+const Tile = ({ className, selected, otherSelected, onClick, children }) => (
+   <TileRoot
+     className={className}
+     selected={selected}
+     otherSelected={otherSelected}
+     onClick={onClick}
+   >
       {children}
       {selected && <Selected />}
    </TileRoot>
 );
 
 Tile.propTypes = {
+   className: PropTypes.string,
    children: PropTypes.node.isRequired,
    selected: PropTypes.bool,
    otherSelected: PropTypes.bool,

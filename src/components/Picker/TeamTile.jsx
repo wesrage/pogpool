@@ -6,10 +6,15 @@ import colors from '../../common/colors';
 import { team as teamPropType } from '../../common/propTypes';
 
 const TileWrapper = styled.div`
-   width: 15vw;
-   height: 15vw;
-   flex-basis: 20%;
-   margin: 0.25em;
+   width: 20%;
+   height: 0;
+   padding-bottom: 20%;
+   margin: 0.5em;
+   position: relative;
+`;
+
+const StyledTile = styled(Tile)`
+   position: absolute;
 `;
 
 const TileContents = styled.div`
@@ -38,11 +43,11 @@ export default class TeamTile extends Component {
       const { id, selected, otherSelected, onSelect } = this.props;
       return (
          <TileWrapper>
-            <Tile style={{ margin: '0.25em' }} selected={selected} otherSelected={otherSelected} onClick={() => onSelect(id)}>
+            <StyledTile selected={selected} otherSelected={otherSelected} onClick={() => onSelect(id)}>
                <TileContents color={colors[id][0]}>
                   <Logo team={id} full />
                </TileContents>
-            </Tile>
+            </StyledTile>
          </TileWrapper>
       );
    }

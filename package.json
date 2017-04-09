@@ -107,6 +107,7 @@
     "redux-thunk": "^2.2.0",
     "style-loader": "^0.13.1",
     "styled-components": "^1.4.4",
+    "uuid": "^3.0.1",
     "webpack": "2.2.1"
   }
 }

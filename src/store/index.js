@@ -22,7 +22,7 @@ export function configureStore(initialState) {
       initialState,
       composeEnhancers(
          applyMiddleware(...middlewares),
-         persistState('picks'),
+         persistState(['picks', 'user']),
       ),
    );
 

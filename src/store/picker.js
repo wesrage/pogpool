@@ -1,13 +1,15 @@
 import axios from '../util/axios';
 
-export const SUBMIT = 'app/picks/SUBMIT';
-export const SUBMIT_SUCCESS = 'app/picks/SUBMIT_SUCCESS';
-export const SUBMIT_FAIL = 'app/picks/SUBMIT_FAIL';
+export const SUBMIT = 'app/picker/SUBMIT';
+export const SUBMIT_SUCCESS = 'app/picker/SUBMIT_SUCCESS';
+export const SUBMIT_FAIL = 'app/picker/SUBMIT_FAIL';
+export const TOGGLE_PHOTOS = 'app/picker/TOGGLE_PHOTOS';
 
 const initialState = {
    submitted: false,
    submitting: false,
    submitError: null,
+   photosVisible: true,
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -30,6 +32,11 @@ export default function reducer(state = initialState, action = {}) {
             submitting: false,
             submitError: action.error,
          };
+      case TOGGLE_PHOTOS:
+         return {
+            ...state,
+            photosVisible: !state.photosVisible,
+         };
       default:
          return state;
    }
@@ -48,3 +55,7 @@ export const submit = () =>
             ({ message }) => dispatch({ type: SUBMIT_FAIL, error: message }),
          );
    };
+
+export const togglePhotos = () => ({
+   type: TOGGLE_PHOTOS,
+});

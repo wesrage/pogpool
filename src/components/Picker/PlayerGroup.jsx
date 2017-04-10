@@ -48,6 +48,7 @@ export default class PlayerGroup extends Component {
       selection: PropTypes.number,
       players: PropTypes.arrayOf(PropTypes.shape(playerPropType)).isRequired,
       onSelect: PropTypes.func.isRequired,
+      photosVisible: PropTypes.bool,
    };
 
    static defaultProps = {
@@ -67,6 +68,7 @@ export default class PlayerGroup extends Component {
                     onSelect={this.props.onSelect}
                     selected={selected}
                     otherSelected={this.props.selection !== null && !selected}
+                    showPhoto={this.props.photosVisible}
                   />
                );
             })}

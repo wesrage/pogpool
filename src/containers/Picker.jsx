@@ -10,7 +10,7 @@ import LabelledInput from '../components/LabelledInput';
 import Button from '../components/Button';
 import { H1, Annotation } from '../components/styled';
 import { makeSelection, removeSelection } from '../store/picks';
-import { submit } from '../store/picker';
+import { submit, togglePhotos } from '../store/picker';
 import { changeField } from '../store/user';
 import groups from '../../modules/groups';
 import { validatePicks } from '../../modules/validation';
@@ -22,6 +22,14 @@ const Centered = styled.div`
    text-align: center;
 `;
 
+const FixedButtonWrapper = styled.div`
+   font-size: 0.5em;
+   position: fixed;
+   top: 0;
+   right: 0;
+   z-index: 1000;
+`;
+
 @connect(
    state => ({
       picks: state.picks,
@@ -29,8 +37,9 @@ const Centered = styled.div`
       submitted: state.picker.submitted,
       submitting: state.picker.submitting,
       submitError: state.picker.submitError,
+      photosVisible: state.picker.photosVisible,
    }),
-   { makeSelection, removeSelection, submit, changeField },
+   { makeSelection, removeSelection, submit, changeField, togglePhotos },
 )
 export default class Picker extends Component {
    static propTypes = {
@@ -39,6 +48,7 @@ export default class Picker extends Component {
          firstName: PropTypes.string,
          lastName: PropTypes.string,
       }),
+      photosVisible: PropTypes.bool,
       submitted: PropTypes.bool,
       submitting: PropTypes.bool,
       submitError: PropTypes.string,
@@ -46,6 +56,7 @@ export default class Picker extends Component {
       removeSelection: PropTypes.func.isRequired,
       submit: PropTypes.func.isRequired,
       changeField: PropTypes.func.isRequired,
+      togglePhotos: PropTypes.func.isRequired,
    };
 
    componentWillReceiveProps(nextProps) {
@@ -95,6 +106,7 @@ export default class Picker extends Component {
         players={players}
         onSelect={this.handleSelect(id)}
         selection={this.props.picks[id]}
+        photosVisible={this.props.photosVisible}
       />
    );
 

@@ -25,7 +25,7 @@ const StyledButton = styled.button`
    }
 `;
 
-const Button = ({ ...buttonProps, children, loading = true, disabled = false, onClick }) => (
+const Button = ({ ...buttonProps, children, loading = false, disabled = false, onClick }) => (
    <StyledButton
      {...buttonProps}
      loading={loading}

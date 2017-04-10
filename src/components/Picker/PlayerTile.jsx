@@ -111,6 +111,7 @@ export default class PlayerTile extends Component {
       onSelect: PropTypes.func.isRequired,
       selected: PropTypes.bool,
       otherSelected: PropTypes.bool,
+      showPhoto: PropTypes.bool,
    };
    static defaultProps = {
       selected: false,
@@ -128,7 +129,8 @@ export default class PlayerTile extends Component {
               otherSelected={otherSelected}
               onClick={() => this.props.onSelect(id)}
             >
-               <Headshot alt={`${fullDisplayName} Headshot`} src={headshotImageUrl} />
+               {this.props.showPhoto &&
+                  <Headshot alt={`${fullDisplayName} Headshot`} src={headshotImageUrl} />}
                <Media query="(max-width: 45em)">
                   {matches =>
                      matches &&

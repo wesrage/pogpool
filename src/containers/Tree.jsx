@@ -4,7 +4,7 @@ import Conference from '../components/Tree/Conference';
 import Division from '../components/Tree/Division';
 import Series from '../components/Tree/Series';
 import Team from '../components/Tree/Team';
-import { H1 } from '../components/styled';
+import { H1, Annotation } from '../components/styled';
 
 const DisplayToggleWrapper = styled.div`
    text-align: center;
@@ -17,6 +17,7 @@ const DisplayToggle = styled.button`
 const TreeRoot = styled.div`
    display: flex;
    justify-content: space-around;
+   padding-bottom: 1em;
 `;
 
 export default class Tree extends Component {
@@ -37,12 +38,10 @@ export default class Tree extends Component {
    );
 
    render() {
-      if (!this.state.show) {
-         return <this.DisplayToggle/>;
-      }
       return (
          <div>
             <H1>Matchups</H1>
+            <Annotation>For reference only</Annotation>
             <TreeRoot>
                <Conference id="W">
                   <Division id="C">
@@ -89,7 +88,6 @@ export default class Tree extends Component {
                   </Division>
                </Conference>
             </TreeRoot>
-            <this.DisplayToggle/>
          </div>
       );
    }

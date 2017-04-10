@@ -5,9 +5,10 @@
   "license": "ISC",
   "scripts": {
     "start": "concurrently --kill-others \"npm run dev\" \"npm run dev-api\"",
-    "build": "webpack --verbose --colors --display-error-details --config webpack.config.prod.babel.js",
+    "build": "better-npm-run build",
     "dev": "better-npm-run dev",
     "dev-api": "better-npm-run dev-api",
+    "prod": "better-npm-run prod-api",
     "test": "jest --watch"
   },
   "betterScripts": {
@@ -43,7 +44,14 @@
         "WEB_HOST": "http://w.esley.ca",
         "NODE_ENV": "production"
       }
-    }
+   },
+   "build": {
+      "command": "webpack --verbose --colors --display-error-details --config webpack.config.prod.babel.js",
+      "env": {
+         "API_HOST": "70.64.17.127",
+         "API_PORT": "8080"
+      }
+   }
   },
   "repository": {
     "type": "git",

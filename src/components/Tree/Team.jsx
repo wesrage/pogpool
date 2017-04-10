@@ -22,6 +22,10 @@ const TeamRoot = styled.div`
    width: 18em;
    max-width: 18em;
 
+   .logo {
+      padding-bottom: 0.25em;
+   }
+
    @media(max-width: 45em) {
       width: 12em;
       max-width: 12em;

@@ -150,9 +150,12 @@ export default class Picker extends Component {
                />
             </Centered>
 
-            <H1>Players</H1>
+            <H1>Forwards</H1>
             <Annotation>1 point = 1 point</Annotation>
             {forwardGroups.map(this.renderPlayerGroup)}
+
+            <H1>Defensemen</H1>
+            <Annotation>1 point = 1 point</Annotation>
             {defenseGroups.map(this.renderPlayerGroup)}
 
             <H1>Teams</H1>

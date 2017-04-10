@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 import logos from '../common/logos';
-import { teams } from '../../scraper/nhl';
+import { teams } from '../../modules/nhl';
 
 const LogoDiv = styled.img`
    width: ${props => props.full ? '100%' : '3em'};

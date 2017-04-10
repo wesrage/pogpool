@@ -6,7 +6,7 @@
 // Once daily
 
 import { loadSchedule } from './scraper';
-import { saveGames } from './dao';
+import { loadActiveGames, saveGames } from './dao';
 import { info } from './log';
 
 export async function updateSchedule(year, season) {
@@ -22,7 +22,7 @@ export async function updateSchedule(year, season) {
 
 export async function updateActiveGames() {
    info('Updating active games...');
-   const games = await dao.loadActiveGames();
+   const games = await loadActiveGames();
    if (!games.length) {
       info('No active games.');
    } else {

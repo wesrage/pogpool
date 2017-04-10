@@ -18,6 +18,8 @@
       "react"
    ],
    "globals": {
+      API_HOST: true,
+      API_PORT: true,
       __DEVELOPMENT__: true,
    },
    "rules": {

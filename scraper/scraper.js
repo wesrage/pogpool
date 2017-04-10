@@ -3,8 +3,8 @@ import moment from 'moment';
 import obex from 'obex';
 import pick from 'lodash.pick';
 import { error } from './log';
-import { Seasons } from './common';
-import * as NHL from './nhl';
+import { Seasons } from '../modules/constants';
+import * as NHL from '../modules/nhl';
 
 export async function loadSchedule(year, season = Seasons.REGULAR) {
    const url = `https://statsapi.web.nhl.com/api/v1/schedule?season=${year}${year + 1}`;

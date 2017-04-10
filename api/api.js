@@ -4,14 +4,13 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import compression from 'compression';
 import { createRoutes } from './routes';
-
-const { API_HOST, API_PORT } = process.env;
+import { API_HOST, API_PORT, WEB_HOST } from './config';
 
 const app = express();
 app.use(compression());
 app.use(
    cors({
-      origin: process.env.HTTP_HOST,
+      origin: WEB_HOST,
       optionsSuccessStatus: 200,
    }),
 );

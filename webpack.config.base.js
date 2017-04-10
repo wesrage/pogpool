@@ -60,6 +60,11 @@ export default {
       new ExtractTextPlugin({
          filename: 'bundle.css',
       }),
+      new webpack.DefinePlugin({
+         API_HOST: JSON.stringify(process.env.API_HOST),
+         API_PORT: JSON.stringify(process.env.API_PORT),
+         __DEVELOPMENT__: process.env.NODE_ENV !== 'production',
+      }),
       new webpack.NoEmitOnErrorsPlugin(),
    ],
    resolve: {

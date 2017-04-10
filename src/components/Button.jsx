@@ -1,21 +1,23 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
+import Spinner from './Spinner';
 
 const StyledButton = styled.button`
-   background-color: ${props => props.theme.main};
+   background-color: ${props => props.loading ? props.theme.accent : props.theme.main};
    border: none;
    border-radius: 0.125em;
-   box-shadow: 1px 1px 5px #888;
+   box-shadow: ${props => props.disabled ? '0 0 0' : '1px 1px 5px #888'};
    color: #fff;
    padding: 0.25em 1em;
    height: 2em;
    font-size: 2em;
    cursor: ${props => props.disabled ? 'default' : 'pointer'};
    transition: all 300ms;
-   opacity: ${props => props.disabled ? 0.5 : 1};
+   opacity: ${props => (props.loading || !props.disabled) ? 1 : 0.5};
+   margin-bottom: 0.5em;
 
    &:hover {
-      background-color: ${props => props.disabled ? props.theme.main : props.theme.accent};
+      background-color: ${props => (props.disabled && !props.loading) ? props.theme.main : props.theme.accent};
    }
 
    &:active {
@@ -23,14 +25,20 @@ const StyledButton = styled.button`
    }
 `;
 
-const Button = ({ ...buttonProps, children, disabled = false, onClick }) => (
-   <StyledButton {...buttonProps} disabled={disabled} onClick={disabled ? () => {} : onClick}>
-      {children}
+const Button = ({ ...buttonProps, children, loading = true, disabled = false, onClick }) => (
+   <StyledButton
+     {...buttonProps}
+     loading={loading}
+     disabled={disabled}
+     onClick={disabled ? () => {} : onClick}
+   >
+      {loading ? <Spinner/> : children}
    </StyledButton>
 );
 
 Button.propTypes = {
    children: PropTypes.node.isRequired,
+   loading: PropTypes.bool,
    disabled: PropTypes.bool,
    onClick: PropTypes.func.isRequired,
 };

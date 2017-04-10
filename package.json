@@ -16,7 +16,7 @@
       "env": {
         "API_HOST": "localhost",
         "API_PORT": 3030,
-        "HTTP_PORT": 3000
+        "WEB_PORT": 3000
       }
     },
     "dash": {
@@ -24,7 +24,7 @@
       "env": {
         "API_HOST": "localhost",
         "API_PORT": 3030,
-        "HTTP_PORT": 3000
+        "WEB_PORT": 3000
       }
     },
     "dev-api": {
@@ -32,7 +32,7 @@
       "env": {
         "API_HOST": "localhost",
         "API_PORT": 3030,
-        "HTTP_HOST": "http://localhost:3000"
+        "WEB_HOST": "http://localhost:3000"
       }
     },
     "prod-api": {
@@ -40,7 +40,7 @@
       "env": {
         "API_HOST": "localhost",
         "API_PORT": 8080,
-        "HTTP_HOST": "http://w.esley.ca",
+        "WEB_HOST": "http://w.esley.ca",
         "NODE_ENV": "production"
       }
     }
@@ -96,6 +96,7 @@
     "http-proxy": "^1.16.2",
     "lodash.pick": "^4.4.0",
     "moment": "^2.18.1",
+    "monk": "^4.0.0",
     "obex": "^1.1.0",
     "piping": "^1.0.0-rc.4",
     "react": "^15.4.2",
@@ -103,6 +104,7 @@
     "react-helmet": "^3.3.2",
     "react-icons": "^2.2.3",
     "react-media": "^1.5.1",
+    "react-notification-system": "^0.2.13",
     "react-redux": "^4.4.6",
     "react-router-dom": "^4.0.0",
     "redux": "^3.6.0",

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import styled from 'styled-components';
 import Media from 'react-media';
 import { H2 } from '../../components/styled';
-import { conferences } from '../../../scraper/nhl';
+import { conferences } from '../../../modules/nhl';
 
 const conferenceIds = Object.keys(conferences);
 

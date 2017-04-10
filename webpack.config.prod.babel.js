@@ -9,7 +9,6 @@ export default {
          'process.env': {
             NODE_ENV: JSON.stringify('production'),
          },
-         __DEVELOPMENT__: false,
       }),
       new webpack.optimize.UglifyJsPlugin(),
    ],

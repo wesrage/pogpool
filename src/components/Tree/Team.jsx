@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import styled from 'styled-components';
 import Media from 'react-media';
 import Logo from '../Logo';
-import { teams } from '../../../scraper/nhl';
+import { teams } from '../../../modules/nhl';
 import colors from '../../common/colors';
 
 const TeamRoot = styled.div`

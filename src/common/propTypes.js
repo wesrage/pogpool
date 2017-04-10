@@ -1,5 +1,5 @@
 import { PropTypes } from 'react';
-import { teams } from '../../scraper/nhl';
+import { teams } from '../../modules/nhl';
 
 export const player = {
    id: PropTypes.number.isRequired,

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import styled from 'styled-components';
 import Media from 'react-media';
 import { H3 } from '../../components/styled';
-import { divisions } from '../../../scraper/nhl';
+import { divisions } from '../../../modules/nhl';
 
 const divisionIds = Object.keys(divisions);
 

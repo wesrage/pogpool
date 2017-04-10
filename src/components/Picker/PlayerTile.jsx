@@ -6,11 +6,6 @@ import Tile from './Tile';
 import colors from '../../common/colors';
 import { player as playerPropType } from '../../common/propTypes';
 
-const HeadshotWrapper = styled.div`
-   width: 100%;
-   position: relative;
-`;
-
 const Headshot = styled.img`
    flex-shrink: 0;
    width: 100%;

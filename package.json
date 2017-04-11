@@ -48,7 +48,7 @@
     "build": {
       "command": "webpack --verbose --colors --display-error-details --config webpack.config.prod.babel.js",
       "env": {
-        "API_HOST": "70.64.17.127",
+        "API_HOST": "api.pog.esley.ca",
         "API_PORT": "8080"
       }
     }

@@ -150,7 +150,12 @@ export default class Picker extends Component {
               }}
             />
 
-            <Notice>Submission Deadline: Wednesday, April 12, 2017 @ 7:00 PM EDT</Notice>
+            <H1>Instructions</H1>
+            <Annotation>
+               <p>Make one selection from each row.</p>
+               <p>There's no need to complete your picks in one sitting; your browser will remember where you left off.</p>
+               <p>Submission Deadline: Wednesday, April 12, 2017 @ 7:00 PM EDT</p>
+            </Annotation>
 
             <H1>Your Information</H1>
             <Centered>
@@ -169,17 +174,15 @@ export default class Picker extends Component {
             </Centered>
 
             <H1>Forwards</H1>
-            <Annotation>1 point = 1 point. Choose one from each row.</Annotation>
+            <Annotation>1 point = 1 point</Annotation>
             {forwardGroups.map(this.renderPlayerGroup)}
 
             <H1>Defensemen</H1>
-            <Annotation>1 point = 1 point. Choose one from each row.</Annotation>
+            <Annotation>1 point = 1 point</Annotation>
             {defenseGroups.map(this.renderPlayerGroup)}
 
             <H1>Teams</H1>
-            <Annotation>
-               1 win = 2 points; 1 shutout = 2 points. Choose one from each row.
-            </Annotation>
+            <Annotation>1 win = 2 points; 1 shutout = 2 points</Annotation>
             {teamGroups.map(this.renderTeamGroup)}
 
             <H1>Stanley Cup Champion</H1>

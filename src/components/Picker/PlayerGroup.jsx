@@ -7,6 +7,8 @@ const Root = styled.div`
    justify-content: space-around;
    display: flex;
    width: 100%;
+   max-width: 64em;
+   margin: 0 auto;
 
    &:not(:last-child) {
       padding-bottom: 2em;

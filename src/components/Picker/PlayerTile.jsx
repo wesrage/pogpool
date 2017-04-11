@@ -12,7 +12,7 @@ const Headshot = styled.img`
 `;
 
 const TileWrapper = styled.div`
-   width: 15vw;
+   width: 18%;
 
    .logo {
       @media(max-width: 64em) {

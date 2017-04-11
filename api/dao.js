@@ -81,7 +81,10 @@ export function savePicks(picks) {
    return picksCollection.update({
       firstName: picks.firstName,
       lastName: picks.lastName,
-   }, picks, {
+   }, {
+      ...picks,
+      timestamp: Date.now(),
+   }, {
       upsert: true,
    });
 }

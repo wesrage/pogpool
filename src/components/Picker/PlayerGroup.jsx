@@ -55,6 +55,10 @@ export default class PlayerGroup extends Component {
       selection: null,
    };
 
+   shouldComponentUpdate(nextProps) {
+      return nextProps.selection !== this.props.selection;
+   }
+
    render() {
       return (
          <Root>

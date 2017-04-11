@@ -21,3 +21,7 @@ export const Annotation = styled.div`
    margin-bottom: 0.75em;
    text-align: center;
 `;
+
+export const Notice = styled(H1)`
+    margin: 1em 0;
+`;

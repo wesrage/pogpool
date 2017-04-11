@@ -8,7 +8,7 @@ import TeamGroup from '../components/Picker/TeamGroup';
 import CupGroup from '../components/Picker/CupGroup';
 import LabelledInput from '../components/LabelledInput';
 import Button from '../components/Button';
-import { H1, Annotation } from '../components/styled';
+import { H1, Notice, Annotation } from '../components/styled';
 import { makeSelection, removeSelection } from '../store/picks';
 import { submit, togglePhotos } from '../store/picker';
 import { changeField } from '../store/user';
@@ -144,7 +144,13 @@ export default class Picker extends Component {
             <Helmet>
                <title>PuckOverGlass 2017 Stanley Cup Playoff Pool</title>
             </Helmet>
-            <NotificationSystem ref={e => { this.notificationSystem = e; }} />
+            <NotificationSystem
+              ref={e => {
+                 this.notificationSystem = e;
+              }}
+            />
+
+            <Notice>Submission Deadline: Wednesday, April 12, 2017 @ 7:00 PM EDT</Notice>
 
             <H1>Your Information</H1>
             <Centered>
@@ -163,19 +169,21 @@ export default class Picker extends Component {
             </Centered>
 
             <H1>Forwards</H1>
-            <Annotation>1 point = 1 point</Annotation>
+            <Annotation>1 point = 1 point. Choose one from each row.</Annotation>
             {forwardGroups.map(this.renderPlayerGroup)}
 
             <H1>Defensemen</H1>
-            <Annotation>1 point = 1 point</Annotation>
+            <Annotation>1 point = 1 point. Choose one from each row.</Annotation>
             {defenseGroups.map(this.renderPlayerGroup)}
 
             <H1>Teams</H1>
-            <Annotation>1 win = 2 points; 1 shutout = 2 points</Annotation>
+            <Annotation>
+               1 win = 2 points; 1 shutout = 2 points. Choose one from each row.
+            </Annotation>
             {teamGroups.map(this.renderTeamGroup)}
 
             <H1>Stanley Cup Champion</H1>
-            <Annotation>Stanley Cup Championship = 20 points</Annotation>
+            <Annotation>Stanley Cup Championship = 20 points. Choose one team.</Annotation>
             {cupGroups.map(this.renderCupGroup)}
 
             <Centered>

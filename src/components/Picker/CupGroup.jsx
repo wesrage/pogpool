@@ -65,6 +65,10 @@ export default class CupGroup extends Component {
       selection: null,
    };
 
+   shouldComponentUpdate(nextProps) {
+      return nextProps.selection !== this.props.selection;
+   }
+
    render() {
       return (
          <Root>

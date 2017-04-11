@@ -64,6 +64,10 @@ export default class TeamGroup extends Component {
       selection: null,
    };
 
+   shouldComponentUpdate(nextProps) {
+      return nextProps.selection !== this.props.selection;
+   }
+
    render() {
       return (
          <Root>

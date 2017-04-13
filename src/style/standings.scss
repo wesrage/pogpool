@@ -1,0 +1,120 @@
+@import 'colors';
+
+.groupName {
+   display: inline-block;
+   font-size: 0.7em;
+   width: 2em;
+}
+
+.pointCount {
+   float: right;
+}
+
+.bestPickCount {
+   font-weight: bold;
+}
+
+.nameRow {
+   font-weight: bold;
+   padding: 0 0.5em;
+}
+
+.pickRow {
+   padding: 0 0.5em;
+}
+
+.bestPickRow {
+   background-color: $best;
+   font-weight: bold;
+}
+
+.outPickRow {
+   background-color: $out;
+   color: #000;
+}
+
+.bestPickRow.outPickRow {
+   background-color: $bestOut;
+}
+
+.bestPickRow.finalPickRow {
+   background-color: $bestFinal;
+   color: #fff;
+}
+
+.worstPickRow.outPickRow {
+   background-color: $worstOut;
+   color: $out;
+}
+
+.pointBar {
+   background-color: $pointBar;
+   height: 1px;
+}
+
+.teamLabel {
+  font-size: 0.7em;
+  margin: 0 0.5em;
+  width: 3.25em;
+}
+
+.standingsRow {
+   color: inherit;
+   display: table-row;
+   transition: background-color 100ms, color 100ms ease-in-out;
+
+   & > * {
+      border-bottom: 1px solid #ccc;
+   }
+
+   &:hover {
+      color: #eee;
+      background-color: #aaa;
+      text-decoration: none;
+   }
+}
+
+.teamPie {
+   position: relative;
+   &:hover {
+      path {
+         opacity: 0.7;
+
+         &:hover {
+            opacity: 1;
+         }
+      }
+   }
+}
+
+.teamPieContainer {
+   margin-bottom: 2em;
+
+   .heading {
+      font-weight: bold;
+      text-align: center;
+   }
+}
+
+.teamPieWrapper {
+   position: relative;
+   width: 200px;
+}
+
+.pieInfo {
+   background-image: radial-gradient(circle closest-side, #fff, transparent 100%);
+   left: 50%;
+   position: absolute;
+   text-shadow: 0 0 1px #fff;
+   top: 50%;
+   transform: translate(-50%, -50%);
+}
+
+.pieInfoTeam {
+   font-weight: bold;
+}
+
+.pieInfoStats {
+   font-size: 0.7em;
+   text-transform: uppercase;
+}

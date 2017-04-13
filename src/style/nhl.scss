@@ -1,0 +1,29 @@
+@import 'colors';
+
+.team {
+   color: #fff;
+
+   &.ANA { background-color: $ANA; fill: $ANA; }
+   &.BOS { background-color: $BOS; fill: $BOS; }
+   &.CGY { background-color: $CGY; fill: $CGY; }
+   &.CHI { background-color: $CHI; fill: $CHI; }
+   &.CBJ { background-color: $CBJ; fill: $CBJ; }
+   &.DAL { background-color: $DAL; fill: $DAL; }
+   &.DET { background-color: $DET; fill: $DET; }
+   &.EDM { background-color: $EDM; fill: $EDM; }
+   &.FLA { background-color: $FLA; fill: $FLA; }
+   &.LAK { background-color: $LAK; fill: $LAK; color: #000; }
+   &.MIN { background-color: $MIN; fill: $MIN; }
+   &.MTL { background-color: $MTL; fill: $MTL; }
+   &.NSH { background-color: $NSH; fill: $NSH; color: #000; }
+   &.NYI { background-color: $NYI; fill: $NYI; }
+   &.NYR { background-color: $NYR; fill: $NYR; }
+   &.OTT { background-color: $OTT; fill: $OTT; }
+   &.PHI { background-color: $PHI; fill: $PHI; }
+   &.PIT { background-color: $PIT; fill: $PIT; color: #000; }
+   &.SJS { background-color: $SJS; fill: $SJS; }
+   &.STL { background-color: $STL; fill: $STL; }
+   &.TBL { background-color: $TBL; fill: $TBL; }
+   &.TOR { background-color: $TOR; fill: $TOR; }
+   &.WSH { background-color: $WSH; fill: $WSH; }
+}

@@ -15,10 +15,10 @@ export async function loadSchedule(year, season = Seasons.REGULAR) {
 
 export async function loadStatsForGames(games) {
    return Promise.all(
-      games.map(async ({ id, gameDate }) => {
+      games.map(async ({ id, gameDateLocal }) => {
          try {
             const stats = await loadGame(id);
-            return { gameDate, stats };
+            return { gameDateLocal, stats };
          } catch (e) {
             error(`    Failed to load game ${id}`);
             return {};
@@ -42,13 +42,16 @@ function parseTeamStatsFromGameReport({ gamePk: id, gameData, liveData }) {
    if (gameData.status.abstractGameState !== 'Final') {
       return {};
    }
-   const { home: { goals: homeScore }, away: { goals: { awayScore } } } = liveData.linescore.teams;
+   const homeScore = liveData.linescore.teams.home.goals;
+   const awayScore = liveData.linescore.teams.away.goals;
+
    const winningTeam = homeScore > awayScore
       ? gameData.teams.home.abbreviation
       : gameData.teams.away.abbreviation;
    const losingTeam = homeScore > awayScore
       ? gameData.teams.away.abbreviation
       : gameData.teams.home.abbreviation;
+
    const roundNumber = +String(id)[7];
    return {
       [winningTeam]: {
@@ -71,7 +74,7 @@ function parsePlayerStatsFromGameReport({ liveData: { boxscore: { teams } } }) {
    };
    return obex(players)
       .map(
-         (__, player) => player.person.fullName.replace(/\s/g, '').replace(/\./g, ''),
+         (__, player) => player.person.id,
          player => _.pick(player.stats.skaterStats, ['goals', 'assists']),
       )
       .filter((__, stats) => stats.goals || stats.assists)

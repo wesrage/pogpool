@@ -10,7 +10,7 @@ import * as scraper from './scraper';
 import * as dao from './dao';
 import { getTimeToNextGameStart, renderGameString } from './helpers';
 import { info, error } from './log';
-// import { Seasons } from '../modules/constants';
+import { Seasons } from '../modules/constants';
 
 export async function updateSchedule(year, season) {
    info(`Updating schedule for ${year} season ${season}...`);
@@ -66,9 +66,11 @@ async function saveGames(games) {
 
 async function updateStatsForActiveGames(games) {
    info('Begin updating stats from active games...');
-   const statSets = scraper.loadStatsForGames(games);
+   const statSets = await scraper.loadStatsForGames(games);
    try {
-      await Promise.all(statSets.map(statSet => dao.saveStats(statSet.dateString, statSet.stats)));
+      await Promise.all(
+         statSets.map(statSet => dao.saveStats(statSet.gameDateLocal, statSet.stats)),
+      );
    } catch (err) {
       error('There was a problem updating stats for active games');
       error(err.stack);
@@ -112,12 +114,14 @@ export function updateStatsForDay(dateString) {
 }
 
 export function updateStatsForDays(dateStrings) {
+   info('Updating stats for days: ');
+   info(dateStrings.join(', '));
    return dao.loadGamesForDays(dateStrings).then(scraper.loadStatsForGames).then(result => {
       const statsByDate = result.reduce(
          (acc, game) => ({
             ...acc,
-            [game.dateString]: {
-               ...acc[game.dateString],
+            [game.gameDateLocal]: {
+               ...acc[game.gameDateLocal],
                ...game.stats,
             },
          }),
@@ -128,9 +132,13 @@ export function updateStatsForDays(dateStrings) {
             const stats = statsByDate[date];
             return dao.saveStats(date, stats);
          }),
-      );
+      ).then(() => {
+         info('    ...Done!');
+      });
    });
 }
+
+updateSchedule(2016, Seasons.PLAYOFFS).then(() => updateStatsForDays(['2017-04-12']));
 // reset().then(() => updateSchedule(2016, Seasons.PLAYOFFS)).then(loadNextGame).then(nextGame => {
 //    const nextGameStartTime = moment(nextGame.gameTime);
 //    const now = moment();

@@ -3,6 +3,7 @@ import _ from 'lodash';
 
 export function getContestantFromPicks({ firstName, lastName, ...picks }, groups) {
    const players = _(groups)
+      .filter(group => group.id !== 'sc')
       .map(group => group.players || group.teams)
       .flatten()
       .keyBy('id')
@@ -27,7 +28,7 @@ export function getPicksByPosition(picks, position) {
 }
 
 export function getGoaliePicks(picks) {
-   const picksMap = obex(picks).filter(groupName => /^g/.test(groupName)).raw();
+   const picksMap = obex(picks).filter(groupName => /^t/.test(groupName)).raw();
    return getPicksFromPicksMap(picksMap);
 }
 

@@ -4,7 +4,8 @@ import baseConfig from './webpack.config.base';
 
 export default {
    ...baseConfig,
-   devtool: 'cheap-module-eval-source-map',
+   // devtool: 'cheap-module-eval-source-map',
+   devtool: 'eval',
    entry: [
       'webpack-hot-middleware/client',
       ...baseConfig.entry,

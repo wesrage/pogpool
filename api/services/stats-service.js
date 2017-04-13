@@ -26,9 +26,8 @@ export function consolidateDailyStats(dailyStats) {
 
 export function generateStandings(contestants, stats) {
    return contestants.map(contestant => {
-      console.log({ picks: contestant.picks });
       const picks = obex(contestant.picks).mapValues((pick, groupName) => {
-         const pickStats = stats[getStatsKey(pick)] || {};
+         const pickStats = stats[pick.id] || {};
          const points = calculateTotalPointsForPick(pickStats, groupName);
          return {
             ...pick,
@@ -94,7 +93,7 @@ export function calculateGroupMinimums(groups, stats) {
 export function calculateMaxPointsByGroup(group, stats) {
    return group.reduce(
       (max, current) => {
-         const pickStats = stats[getStatsKey(current)] || {};
+         const pickStats = stats[current.id] || {};
          return Math.max(max, calculateTotalPointsForPick(pickStats));
       },
       0,
@@ -104,7 +103,7 @@ export function calculateMaxPointsByGroup(group, stats) {
 export function calculateMinPointsByGroup(group, stats) {
    return group.reduce(
       (min, current) => {
-         const pickStats = stats[getStatsKey(current)] || {};
+         const pickStats = stats[current.id] || {};
          return Math.min(min, calculateTotalPointsForPick(pickStats));
       },
       Number.MAX_VALUE,
@@ -126,7 +125,7 @@ export function getBestPickInGroup(group, stats) {
    let maxPoints = -1;
    return group.reduce(
       (bestPick, current) => {
-         const pickStats = stats[getStatsKey(current)] || {};
+         const pickStats = stats[current.id] || {};
          const pickPoints = calculateTotalPointsForPick(pickStats);
          const result = pickPoints > maxPoints ? current : bestPick;
 
@@ -154,13 +153,6 @@ export function getAllTeamAbbreviations(stats) {
          entityStats.hasOwnProperty('wins') || entityStats.hasOwnProperty('losses'),
    );
    return Object.keys(teamStats);
-}
-
-function getStatsKey(pick) {
-   if (pick.firstName) {
-      return pick.firstName + pick.lastName;
-   }
-   return pick.team;
 }
 
 function calculateTotalPointsForPick(

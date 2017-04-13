@@ -1,7 +1,7 @@
-export function info(...args) {
-   console.log(...args);
+export function info(arg) {
+   console.log(arg);
 }
 
-export function error(...args) {
-   console.error(...args);
+export function error(arg) {
+   console.error(arg);
 }

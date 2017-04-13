@@ -1,7 +1,7 @@
 import axios from 'axios';
 import moment from 'moment';
 import obex from 'obex';
-import pick from 'lodash.pick';
+import _ from 'lodash';
 import { error } from './log';
 import { Seasons } from '../modules/constants';
 import * as NHL from '../modules/nhl';
@@ -71,10 +71,10 @@ function parsePlayerStatsFromGameReport({ liveData: { boxscore: { teams } } }) {
    };
    return obex(players)
       .map(
-         (_, player) => player.person.fullName.replace(/\s/g, '').replace(/\./g, ''),
-         player => pick(player.stats.skaterStats, ['goals', 'assists']),
+         (__, player) => player.person.fullName.replace(/\s/g, '').replace(/\./g, ''),
+         player => _.pick(player.stats.skaterStats, ['goals', 'assists']),
       )
-      .filter((_, stats) => stats.goals || stats.assists)
+      .filter((__, stats) => stats.goals || stats.assists)
       .raw();
 }
 
@@ -90,5 +90,5 @@ const transformScheduleGame = ({ gamePk: id, gameDate, status, teams }) => ({
       home: NHL.teamKeys[teams.home.team.id],
    },
    gameDateLocal: moment(gameDate).format('YYYY-MM-DD'),
-   gameTime: moment.utc(gameDate).format('YYYY-MM-DDTHH:mm'),
+   gameTime: moment.utc(gameDate).toDate(),
 });

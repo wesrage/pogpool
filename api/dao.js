@@ -1,9 +1,9 @@
 import monk from 'monk';
 import moment from 'moment';
 import obex from 'obex';
-import config from './config';
+import { DB_URL } from '../db/config';
 
-const db = monk(config.DB_URL);
+const db = monk(DB_URL);
 
 const gamesCollection = db.get('games');
 const statisticsCollection = db.get('statistics');
@@ -11,12 +11,15 @@ const picksCollection = db.get('picks');
 
 export function saveGames(games) {
    const promises = games.map(game =>
-      gamesCollection.update({
-         gamePk: game.gamePk,
-      }, game, {
-         upsert: true,
-      }),
-   );
+      gamesCollection.update(
+         {
+            gamePk: game.gamePk,
+         },
+         game,
+         {
+            upsert: true,
+         },
+      ));
    return Promise.all(promises);
 }
 
@@ -46,52 +49,67 @@ export function loadActiveGames() {
 }
 
 export function saveStats(dateString, stats) {
-   const flatStats = (Object.keys(stats).length)
-      ? obex(stats).mapKeys(key => `stats.${key}`)
-      : {};
+   const flatStats = Object.keys(stats).length ? obex(stats).mapKeys(key => `stats.${key}`) : {};
    if (Object.keys(stats).length === 0) {
-      return statisticsCollection.update({
-         dateString,
-         stats: { $exists: false },
-      }, {
-         $set: { stats: {} },
-      });
+      return statisticsCollection.update(
+         {
+            dateString,
+            stats: { $exists: false },
+         },
+         {
+            $set: { stats: {} },
+         },
+      );
    }
-   return statisticsCollection.update({
-      dateString,
-   }, {
-      $set: {
+   return statisticsCollection.update(
+      {
          dateString,
-         ...flatStats,
       },
-   }, {
-      upsert: true,
-   });
+      {
+         $set: {
+            dateString,
+            ...flatStats,
+         },
+      },
+      {
+         upsert: true,
+      },
+   );
 }
 
 export function loadNextGame() {
-   return gamesCollection.find({
-      gameTime: { $gt: moment().toDate() },
-   })
-   .sort({ gameTime: 1 })
-   .limit(1);
+   return gamesCollection
+      .find({
+         gameTime: { $gt: moment().toDate() },
+      })
+      .sort({ gameTime: 1 })
+      .limit(1);
 }
 
 export function savePicks(picks) {
-   return picksCollection.update({
-      firstName: picks.firstName,
-      lastName: picks.lastName,
-   }, {
-      ...picks,
-      timestamp: Date.now(),
-   }, {
-      upsert: true,
-   });
+   return picksCollection.update(
+      {
+         firstName: picks.firstName,
+         lastName: picks.lastName,
+      },
+      {
+         ...picks,
+         timestamp: Date.now(),
+      },
+      {
+         upsert: true,
+      },
+   );
 }
 
 export function loadPicks() {
-   return picksCollection.find({}, {
-      _id: false,
-   })
-   .toArray();
+   return picksCollection.find(
+      {},
+      {
+         fields: {
+            _id: 0,
+            timestamp: 0,
+         },
+      },
+   );
 }

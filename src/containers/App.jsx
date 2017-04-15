@@ -1,9 +1,9 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Route } from 'react-router-dom';
-import Picker from './Picker';
+// import Picker from './Picker';
 import Standings from './Standings';
-import Tree from './Tree';
+// import Tree from './Tree';
 import Themes from '../common/themes';
 
 const App = () => (

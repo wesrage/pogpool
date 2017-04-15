@@ -63,8 +63,10 @@ export default class PieChart extends Component {
       this.create();
    }
 
-   shouldComponentUpdate() {
-      return false;
+   shouldComponentUpdate(nextProps) {
+      return !_.isEqual(nextProps.maxPoints, this.props.maxPoints) ||
+         !_.isEqual(nextProps.teamInfo, this.props.teamInfo) ||
+         !_.isEqual(nextProps.data, this.props.data);
    }
 
    componentWillUnmount() {
@@ -89,6 +91,6 @@ export default class PieChart extends Component {
    }
 
    render() {
-      return <div ref={e => (this.pie = e)} />;
+      return <div ref={e => this.pie = e} />;
    }
 }

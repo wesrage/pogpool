@@ -71,7 +71,7 @@ export function determineFinalStatus(pick, groupActiveCount) {
 }
 
 export function calculateActiveCountMap(groups, stats, eliminationMap) {
-   return obex(groups)
+   return obex(_.keyBy(groups, 'id'))
       .mapValues(
          group => (group.players || group.teams).filter(pick => !eliminationMap[pick.team]).length,
       )
@@ -79,13 +79,13 @@ export function calculateActiveCountMap(groups, stats, eliminationMap) {
 }
 
 export function calculateGroupMaximums(groups, stats) {
-   return obex(groups)
+   return obex(_.keyBy(groups, 'id'))
       .mapValues(group => calculateMaxPointsByGroup(group.players || group.teams, stats))
       .raw();
 }
 
 export function calculateGroupMinimums(groups, stats) {
-   return obex(groups)
+   return obex(_.keyBy(groups, 'id'))
       .mapValues(group => calculateMinPointsByGroup(group.players || group.teams, stats))
       .raw();
 }

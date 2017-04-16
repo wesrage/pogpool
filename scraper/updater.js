@@ -116,8 +116,8 @@ export function updateStatsForDay(dateString) {
 export function updateStatsForDays(dateStrings) {
    info('Updating stats for days: ');
    info(dateStrings.join(', '));
-   return dao.loadGamesForDays(dateStrings).then(scraper.loadStatsForGames).then(result => {
-      const statsByDate = result.reduce(
+   return dao.loadGamesForDays(dateStrings).then(scraper.loadStatsForGames).then(games => {
+      const statsByDate = games.reduce(
          (acc, game) => ({
             ...acc,
             [game.gameDateLocal]: {
@@ -127,18 +127,20 @@ export function updateStatsForDays(dateStrings) {
          }),
          {},
       );
-      return Promise.all(
-         Object.keys(statsByDate).map(date => {
+      return Promise.all([
+         ...Object.keys(statsByDate).map(date => {
             const stats = statsByDate[date];
             return dao.saveStats(date, stats);
          }),
-      ).then(() => {
+         ...games.map(dao.updateGameStatus),
+      ]).then(() => {
          info('    ...Done!');
       });
    });
 }
 
-updateSchedule(2016, Seasons.PLAYOFFS).then(() => updateStatsForDays(['2017-04-12']));
+updateSchedule(2016, Seasons.PLAYOFFS).then(() =>
+   updateStatsForDays(['2017-04-12', '2017-04-13', '2017-04-14', '2017-04-15']));
 // reset().then(() => updateSchedule(2016, Seasons.PLAYOFFS)).then(loadNextGame).then(nextGame => {
 //    const nextGameStartTime = moment(nextGame.gameTime);
 //    const now = moment();

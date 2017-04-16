@@ -17,8 +17,8 @@ export async function loadStatsForGames(games) {
    return Promise.all(
       games.map(async ({ id, gameDateLocal }) => {
          try {
-            const stats = await loadGame(id);
-            return { gameDateLocal, stats };
+            const { period, stats } = await loadGame(id);
+            return { gameDateLocal, id, period, stats };
          } catch (e) {
             error(`    Failed to load game ${id}`);
             return {};
@@ -30,7 +30,10 @@ export async function loadStatsForGames(games) {
 async function loadGame(gameId) {
    const url = `https://statsapi.web.nhl.com/api/v1/game/${gameId}/feed/live`;
    const { data: gameReport } = await axios.get(url);
-   return parseStatsFromGameReport(gameReport);
+   return {
+      period: gameReport.liveData.linescore.currentPeriod,
+      stats: parseStatsFromGameReport(gameReport),
+   };
 }
 
 const parseStatsFromGameReport = report => ({

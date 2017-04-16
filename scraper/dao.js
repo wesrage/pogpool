@@ -30,6 +30,10 @@ export function saveGames(games) {
    );
 }
 
+export function updateGameStatus({ id, period }) {
+   return gamesCollection.update({ id }, { $set: { period } });
+}
+
 export function loadDailyStats() {
    return statisticsCollection.find();
 }

@@ -533,7 +533,7 @@ export default [
             locationName: 'Toronto',
             teamName: 'Maple Leafs',
             goalies: [
-               { firstName: 'Frederik', lastName: 'Anderson' },
+               { firstName: 'Frederik', lastName: 'Andersen' },
                { firstName: 'Curtis', lastName: 'McElhinney' },
             ],
          },

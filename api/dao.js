@@ -34,9 +34,16 @@ export function loadFinishedGames() {
 }
 
 export function loadGamesForDays(days) {
-   return gamesCollection.find({
-      gameDateString: { $in: days },
-   });
+   return gamesCollection.find(
+      {
+         gameDateLocal: { $in: days },
+      },
+      {
+         fields: {
+            _id: 0,
+         },
+      },
+   );
 }
 
 export function loadActiveGames() {

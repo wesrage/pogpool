@@ -89,8 +89,14 @@ const transformScheduleGame = ({ gamePk: id, gameDate, status, teams }) => ({
    active: status.abstractGameState === 'Live',
    completed: status.abstractGameState === 'Final',
    teams: {
-      away: NHL.teamKeys[teams.away.team.id],
-      home: NHL.teamKeys[teams.home.team.id],
+      away: {
+         team: NHL.teamKeys[teams.away.team.id],
+         score: teams.away.score,
+      },
+      home: {
+         team: NHL.teamKeys[teams.home.team.id],
+         score: teams.home.score,
+      },
    },
    gameDateLocal: moment(gameDate).format('YYYY-MM-DD'),
    gameTime: moment.utc(gameDate).toDate(),

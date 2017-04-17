@@ -1,6 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import Games from './Games';
 // import Picker from './Picker';
 import Standings from './Standings';
 import Tree from './Tree';
@@ -8,12 +9,13 @@ import Themes from '../common/themes';
 
 const App = () => (
    <ThemeProvider theme={Themes.PIT}>
-      <div>
-         <Redirect from="/" to="/standings"/>
+      <Switch>
+         <Redirect exact from="/" to="/standings" />
+         <Route path="/games" component={Games} />
          <Route path="/tree" component={Tree} />
          {/* <Route path="/" component={Picker} /> */}
          <Route path="/standings" component={Standings} />
-      </div>
+      </Switch>
    </ThemeProvider>
 );
 

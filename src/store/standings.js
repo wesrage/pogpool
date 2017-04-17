@@ -65,17 +65,17 @@ export const loadStandings = () =>
          .get('/standings')
          .then(
             ({ data: contestants }) => dispatch({ type: LOAD_STANDINGS_SUCCESS, contestants }),
-            ({ message }) => dispatch({ type: LOAD_STANDINGS_FAIL, error: message }),
+            ({ message }) => dispatch({ type: LOAD_STANDINGS_FAIL, message }),
          );
    };
 
 export const loadTeams = () =>
    dispatch => {
       dispatch({ type: LOAD_TEAMS });
-      axios
+      return axios
          .get('/teams')
          .then(
             ({ data: teams }) => dispatch({ type: LOAD_TEAMS_SUCCESS, teams }),
-            ({ message }) => dispatch({ type: LOAD_TEAMS_FAIL, error: message }),
+            ({ message }) => dispatch({ type: LOAD_TEAMS_FAIL, message }),
          );
    };

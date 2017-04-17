@@ -9,3 +9,5 @@ export const SeasonCodes = {
    REGULAR: 2,
    PLAYOFFS: 3,
 };
+
+export const DATE_THRESHOLD = 16;

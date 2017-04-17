@@ -30,7 +30,7 @@ export default function reducer(state = initialState, action = {}) {
          return {
             ...state,
             submitting: false,
-            submitError: action.error,
+            submitError: action.message,
          };
       case TOGGLE_PHOTOS:
          return {
@@ -52,7 +52,7 @@ export const submit = () =>
       axios.put('/picks', payload)
          .then(
             () => dispatch({ type: SUBMIT_SUCCESS }),
-            ({ message }) => dispatch({ type: SUBMIT_FAIL, error: message }),
+            ({ message }) => dispatch({ type: SUBMIT_FAIL, message }),
          );
    };
 

@@ -73,6 +73,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.9.0",
+    "express-history-api-fallback": "^2.1.0",
     "jest": "^15.1.1",
     "react-test-renderer": "^15.4.2",
     "redux-devtools-extension": "^2.13.0",

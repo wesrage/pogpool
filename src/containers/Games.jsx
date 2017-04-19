@@ -40,11 +40,11 @@ export default class Games extends Component {
       return (
          <GamesRoot>
             <SpinnerContainer loading={this.props.loading}>
-               <GamesWrapper>
-                  {this.props.games.map(game => (
-                     <Game key={game.id} {...game}/>
-                  ))}
-               </GamesWrapper>
+               {() => (
+                  <GamesWrapper>
+                     {this.props.games.map(game => <Game key={game.id} {...game} />)}
+                  </GamesWrapper>
+               )}
             </SpinnerContainer>
          </GamesRoot>
       );

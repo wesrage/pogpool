@@ -13,14 +13,11 @@ const renderSpinner = () => (
 const SpinnerContainer = ({ children, loading }) => (
    loading
       ? renderSpinner()
-      : children
+      : children()
 );
 
 SpinnerContainer.propTypes = {
-   children: PropTypes.oneOfType([
-      PropTypes.func.isRequired,
-      PropTypes.node,
-   ]),
+   children: PropTypes.func.isRequired,
    loading: PropTypes.bool,
 };
 

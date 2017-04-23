@@ -62,6 +62,7 @@ export default class Standings extends Component {
                           contestants={contestants}
                           maxPoints={this.props.maxPoints}
                           teamInfo={this.props.teamInfo}
+                          loading={this.props.loadingTeams || this.props.loadingStandings}
                         />
                         <ContestantList
                           contestants={contestants}

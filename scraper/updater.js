@@ -139,12 +139,17 @@ export function updateStatsForDays(dateStrings) {
    });
 }
 
+const firstDay = moment('2017-04-12');
+const lastDay = moment();
+const allDays = [];
+for (
+   let currentDay = firstDay;
+   !currentDay.isAfter(lastDay);
+   currentDay = currentDay.clone().add(1, 'day')
+) {
+   allDays.push(currentDay);
+}
+
 updateSchedule(2016, Seasons.PLAYOFFS).then(() =>
-   updateStatsForDays(['2017-04-12', '2017-04-13', '2017-04-14', '2017-04-15']));
-// reset().then(() => updateSchedule(2016, Seasons.PLAYOFFS)).then(loadNextGame).then(nextGame => {
-//    const nextGameStartTime = moment(nextGame.gameTime);
-//    const now = moment();
-//    const timeToWait = nextGameStartTime.diff(now);
-//    const readableWaitTime = moment.duration(timeToWait).humanize();
-//    console.log(readableWaitTime);
-// });
+   updateStatsForDays(allDays.map(day => day.format('YYYY-MM-DD'))),
+);

@@ -49,7 +49,7 @@ export function decorateStandingsPicks(contestants, groupMaximums, groupMinimums
          ...pick,
          best: pick.points > 0 && pick.points === groupMaximums[groupName],
          worst: pick.points === groupMinimums[groupName] && pick.points < groupMaximums[groupName],
-         out: eliminationMap[pick.team],
+         out: eliminationMap[pick.team || pick.id],
       })),
    }));
 }

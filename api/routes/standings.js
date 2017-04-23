@@ -32,6 +32,11 @@ export default {
                decoratedStandings,
                activeCountsByGroup,
             );
+            if (process.env.NODE_ENV === 'production') {
+               decoratedStandings = decoratedStandings.filter(
+                  contestant => contestant.firstName !== 'Bizarro',
+               );
+            }
             res.json(decoratedStandings);
          })
          .catch(err => {

@@ -26,11 +26,11 @@ export default {
                   plugins: [
                      'transform-decorators-legacy',
                   ],
-                  env: {
-                     development: {
-                        presets: ['react-hmre'],
-                     },
-                  },
+                  // env: {
+                  //    development: {
+                  //       presets: ['react-hmre'],
+                  //    },
+                  // },
                },
             },
          }, {

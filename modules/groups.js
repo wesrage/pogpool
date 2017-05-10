@@ -389,7 +389,7 @@ export default [
             teamName: 'Penguins',
             goalies: [
                { firstName: 'Marc-Andre', lastName: 'Fleury' },
-               { firstName: 'Tristan', lastName: 'Jarry' },
+               { firstName: 'Matt', lastName: 'Murray' },
             ],
          },
          {

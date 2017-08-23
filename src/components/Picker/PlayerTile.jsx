@@ -17,7 +17,6 @@ const TileWrapper = styled.div`
    .logo {
       @media(max-width: 64em) {
          width: 1.5em;
-         height: 1em;
       }
 
       @media(max-width: 45em) {

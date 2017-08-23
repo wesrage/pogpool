@@ -140,7 +140,7 @@ export function updateStatsForDays(dateStrings) {
 }
 
 const firstDay = moment('2017-04-12');
-const lastDay = moment();
+const lastDay = moment('2017-06-15');
 const allDays = [];
 for (
    let currentDay = firstDay;

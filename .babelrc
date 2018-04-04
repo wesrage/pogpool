@@ -1,16 +1,6 @@
 {
    "presets": [
-      "es2015",
-      "react",
-      "stage-0"
-   ],
-   "plugins": [
-      "transform-decorators-legacy",
-      "transform-async-to-generator",
-      ["typecheck", {
-         "disable": {
-            "production": true
-         }
-      }]
-   ],
+      "env",
+      "stage-1"
+   ]
 }

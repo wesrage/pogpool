@@ -29,4 +29,4 @@ export default {
    VAN: ['#003e7e', '#008852', '#adaeb2', '#fff'],
    WSH: ['#002147', '#c60c30', '#fff'],
    WPG: ['#002d62', '#006eC8', '#8d8d8f', '#fff'],
-};
+}

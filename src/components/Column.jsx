@@ -1,39 +1,40 @@
-import React, { PropTypes } from 'react';
-import classnames from 'classnames';
-import bootstrap from '../style/bootstrap/bootstrap.scss';
+import PropTypes from 'prop-types'
+import React from 'react'
+import classnames from 'classnames'
+import bootstrap from '../style/bootstrap/bootstrap.scss'
 
 const Column = ({ children, xs, xsOffset, sm, smOffset, md, mdOffset, lg, lgOffset, ...props }) => {
-   const classes = [];
+   const classes = []
    if (xs) {
-      classes.push(bootstrap[`col-xs-${xs}`]);
+      classes.push(bootstrap[`col-xs-${xs}`])
    }
    if (xsOffset) {
-      classes.push(bootstrap[`col-xs-offset-${xsOffset}`]);
+      classes.push(bootstrap[`col-xs-offset-${xsOffset}`])
    }
    if (sm) {
-      classes.push(bootstrap[`col-sm-${sm}`]);
+      classes.push(bootstrap[`col-sm-${sm}`])
    }
    if (smOffset) {
-      classes.push(bootstrap[`col-sm-offset-${smOffset}`]);
+      classes.push(bootstrap[`col-sm-offset-${smOffset}`])
    }
    if (md) {
-      classes.push(bootstrap[`col-md-${md}`]);
+      classes.push(bootstrap[`col-md-${md}`])
    }
    if (mdOffset) {
-      classes.push(bootstrap[`col-md-offset-${mdOffset}`]);
+      classes.push(bootstrap[`col-md-offset-${mdOffset}`])
    }
    if (lg) {
-      classes.push(bootstrap[`col-lg-${lg}`]);
+      classes.push(bootstrap[`col-lg-${lg}`])
    }
    if (lgOffset) {
-      classes.push(bootstrap[`col-lg-offset-${lgOffset}`]);
+      classes.push(bootstrap[`col-lg-offset-${lgOffset}`])
    }
    return (
       <div {...props} className={classnames(props.className, classes)}>
          {children}
       </div>
-   );
-};
+   )
+}
 
 Column.propTypes = {
    children: PropTypes.node,
@@ -46,6 +47,6 @@ Column.propTypes = {
    mdOffset: PropTypes.number,
    lg: PropTypes.number,
    lgOffset: PropTypes.number,
-};
+}
 
-export default Column;
+export default Column

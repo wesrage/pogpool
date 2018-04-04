@@ -1,11 +1,9 @@
-import webpack from 'webpack';
-import DashboardPlugin from 'webpack-dashboard/plugin';
-import baseConfig from './webpack.config.base';
+import webpack from 'webpack'
+import baseConfig from './webpack.config.base'
 
 export default {
    ...baseConfig,
-   // devtool: 'cheap-module-eval-source-map',
-   devtool: 'eval',
+   devtool: 'cheap-module-eval-source-map',
    entry: [
       'webpack-hot-middleware/client',
       ...baseConfig.entry,
@@ -13,7 +11,9 @@ export default {
    plugins: [
       ...baseConfig.plugins,
       new webpack.HotModuleReplacementPlugin(),
-      new DashboardPlugin(),
+      new webpack.DefinePlugin({
+         __DEVELOPMENT__: true,
+      }),
    ],
    watch: true,
-};
+}

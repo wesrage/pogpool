@@ -1,7 +1,7 @@
 export const conferenceKeys = {
    WESTERN: 'W',
    EASTERN: 'E',
-};
+}
 
 export const conferences = {
    E: {
@@ -14,14 +14,14 @@ export const conferences = {
       shortName: 'West',
       divisions: ['C', 'P'],
    },
-};
+}
 
 export const divisionKeys = {
    ATLANTIC: 'A',
    CENTRAL: 'C',
    METROPOLITAN: 'M',
    PACIFIC: 'P',
-};
+}
 
 export const divisions = {
    A: {
@@ -40,7 +40,7 @@ export const divisions = {
       fullName: 'Pacific Division',
       shortName: 'Pacific',
    },
-};
+}
 
 export const teamKeys = [
    null,
@@ -98,7 +98,7 @@ export const teamKeys = [
    'WPG',
    'ARI',
    'VGK',
-];
+]
 
 export const teams = {
    ANA: {
@@ -349,4 +349,4 @@ export const teams = {
       conference: 'W',
       division: 'C',
    },
-};
+}

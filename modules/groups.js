@@ -1,3 +1,7 @@
+export function filterGroups(groups, type) {
+   return groups.filter(g => g.id[0] === type)
+}
+
 export default [
    {
       id: 'f1',

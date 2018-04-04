@@ -1,6 +1,7 @@
-import React, { PropTypes } from 'react';
-import Spinner from './Spinner';
-import layout from '../style/layout.scss';
+import PropTypes from 'prop-types'
+import React from 'react'
+import Spinner from './Spinner'
+import layout from '../style/layout.scss'
 
 const renderSpinner = () => (
    <div className={layout.centerParent}>
@@ -8,21 +9,21 @@ const renderSpinner = () => (
          <Spinner />
       </div>
    </div>
-);
+)
 
 const SpinnerContainer = ({ children, loading }) => (
    loading
       ? renderSpinner()
       : children()
-);
+)
 
 SpinnerContainer.propTypes = {
    children: PropTypes.func.isRequired,
    loading: PropTypes.bool,
-};
+}
 
 SpinnerContainer.defaultProps = {
    loading: false,
-};
+}
 
-export default SpinnerContainer;
+export default SpinnerContainer

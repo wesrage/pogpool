@@ -1,8 +1,9 @@
-import React, { PropTypes } from 'react';
-import classnames from 'classnames';
-import bootstrap from '../style/bootstrap/bootstrap.scss';
-import nhlStyles from '../style/nhl.scss';
-import styles from '../style/standings.scss';
+import PropTypes from 'prop-types'
+import React from 'react'
+import classnames from 'classnames'
+import bootstrap from '../style/bootstrap/bootstrap.scss'
+import nhlStyles from '../style/nhl.scss'
+import styles from '../style/standings.scss'
 
 const TeamLabel = ({ team }) => (
    <span
@@ -15,15 +16,15 @@ const TeamLabel = ({ team }) => (
    >
       {team}
    </span>
-);
+)
 
 TeamLabel.propTypes = {
    out: PropTypes.bool,
    team: PropTypes.string.isRequired,
-};
+}
 
 TeamLabel.defaultProps = {
    out: false,
-};
+}
 
-export default TeamLabel;
+export default TeamLabel

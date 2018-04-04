@@ -1,15 +1,16 @@
-import React, { Component, PropTypes } from 'react';
-import styled from 'styled-components';
-import Media from 'react-media';
-import Logo from '../Logo';
-import Tile from './Tile';
-import colors from '../../common/colors';
-import { player as playerPropType } from '../../common/propTypes';
+import PropTypes from 'prop-types'
+import React from 'react'
+import styled from 'styled-components'
+import Media from 'react-media'
+import Logo from '../../components/Logo'
+import Tile from './Tile'
+import colors from '../../common/colors'
+import { player as playerPropType } from '../../common/propTypes'
 
 const Headshot = styled.img`
    flex-shrink: 0;
    width: 100%;
-`;
+`
 
 const TileWrapper = styled.div`
    width: 18%;
@@ -28,7 +29,7 @@ const TileWrapper = styled.div`
          left: -0.25em;
       }
    }
-`;
+`
 
 const Info = styled.div`
    background-color: ${props => props.color};
@@ -37,6 +38,7 @@ const Info = styled.div`
    align-items: center;
    height: 2.5em;
    border-radius: 0 0 0.125em 0.125em;
+   overflow: hidden;
 
    @media(max-width: 64em) {
       height: 1.5em;
@@ -50,11 +52,11 @@ const Info = styled.div`
    @media(max-width: 30em) {
       padding: 0 0.25em;
    }
-`;
+`
 
 const Team = styled.div`
    padding-left: 0.25em;
-`;
+`
 
 const AbsoluteLogoWrapper = styled.div`
    position: absolute;
@@ -70,7 +72,7 @@ const AbsoluteLogoWrapper = styled.div`
       left: 0;
       top: 0;
    }
-`;
+`
 
 const Name = styled.span`
    color: #fff;
@@ -103,25 +105,25 @@ const Name = styled.span`
    @media(max-width: 24em) {
       font-size: 0.45em;
    }
-`;
+`
 
-export default class PlayerTile extends Component {
+export default class PlayerTile extends React.Component {
    static propTypes = {
       ...playerPropType,
       onSelect: PropTypes.func.isRequired,
       selected: PropTypes.bool,
       otherSelected: PropTypes.bool,
       showPhoto: PropTypes.bool,
-   };
+   }
    static defaultProps = {
       selected: false,
       otherSelected: false,
-   };
+   }
 
    render() {
-      const { id, firstName, lastName, team, selected, otherSelected } = this.props;
-      const fullDisplayName = `${firstName} ${lastName}`;
-      const headshotImageUrl = `https://nhl.bamcontent.com/images/headshots/current/168x168/${id}@2x.jpg`;
+      const { id, firstName, lastName, team, selected, otherSelected } = this.props
+      const fullDisplayName = `${firstName} ${lastName}`
+      const headshotImageUrl = `https://nhl.bamcontent.com/images/headshots/current/168x168/${id}@2x.jpg`
       return (
          <TileWrapper>
             <Tile
@@ -148,6 +150,6 @@ export default class PlayerTile extends Component {
                </Info>
             </Tile>
          </TileWrapper>
-      );
+      )
    }
 }

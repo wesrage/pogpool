@@ -1,14 +1,15 @@
-import React, { Component, PropTypes } from 'react';
-import styled from 'styled-components';
-import Tile from './Tile';
-import Logo from '../Logo';
-import colors from '../../common/colors';
-import { team as teamPropType } from '../../common/propTypes';
+import PropTypes from 'prop-types'
+import React from 'react'
+import styled from 'styled-components'
+import Tile from './Tile'
+import Logo from '../../components/Logo'
+import colors from '../../common/colors'
+import { team as teamPropType } from '../../common/propTypes'
 
 const TileWrapper = styled.div`
-   margin: 0.5em;
-   position: relative;
-   width: 20%;
+   margin: 0.5em
+   position: relative
+   width: 20%
 
    &:before {
       display: block;
@@ -16,7 +17,7 @@ const TileWrapper = styled.div`
       width: 100%;
       padding-top: 100%;
    }
-`;
+`
 
 const StyledTile = styled(Tile)`
    position: absolute;
@@ -24,7 +25,7 @@ const StyledTile = styled(Tile)`
    left: 0;
    right: 0;
    bottom: 0;
-`;
+`
 
 const TileContents = styled.div`
    background-color: ${props => props.color};
@@ -33,23 +34,23 @@ const TileContents = styled.div`
    display: flex;
    align-items: center;
    justify-content: center;
-`;
+`
 
-export default class TeamTile extends Component {
+export default class TeamTile extends React.Component {
    static propTypes = {
       ...teamPropType,
       onSelect: PropTypes.func.isRequired,
       selected: PropTypes.bool,
       otherSelected: PropTypes.bool,
-   };
+   }
 
    static defaultProps = {
       selected: false,
       otherSelected: false,
-   };
+   }
 
    render() {
-      const { id, selected, otherSelected, onSelect } = this.props;
+      const { id, selected, otherSelected, onSelect } = this.props
       return (
          <TileWrapper>
             <StyledTile
@@ -62,6 +63,6 @@ export default class TeamTile extends Component {
                </TileContents>
             </StyledTile>
          </TileWrapper>
-      );
+      )
    }
 }

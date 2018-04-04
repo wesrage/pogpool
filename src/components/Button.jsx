@@ -1,6 +1,7 @@
-import React, { PropTypes } from 'react';
-import styled from 'styled-components';
-import Spinner from './Spinner';
+import PropTypes from 'prop-types'
+import React from 'react'
+import styled from 'styled-components'
+import Spinner from './Spinner'
 
 const StyledButton = styled.button`
    background-color: ${props => props.loading ? props.theme.accent : props.theme.main};
@@ -23,7 +24,7 @@ const StyledButton = styled.button`
    &:active {
       box-shadow: 0 0 0;
    }
-`;
+`
 
 const Button = ({ ...buttonProps, children, loading = false, disabled = false, onClick }) => (
    <StyledButton
@@ -34,13 +35,13 @@ const Button = ({ ...buttonProps, children, loading = false, disabled = false, o
    >
       {loading ? <Spinner/> : children}
    </StyledButton>
-);
+)
 
 Button.propTypes = {
    children: PropTypes.node.isRequired,
    loading: PropTypes.bool,
    disabled: PropTypes.bool,
    onClick: PropTypes.func.isRequired,
-};
+}
 
-export default Button;
+export default Button

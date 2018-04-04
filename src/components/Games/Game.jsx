@@ -1,10 +1,11 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types'
+import React from 'react'
 
 const Game = ({ active, completed, id, period, teams, gameDateLocal, gameTime }) => {
    return (
       <div/>
-   );
-};
+   )
+}
 
 Game.propTypes = {
    active: PropTypes.bool.isRequired,
@@ -23,6 +24,6 @@ Game.propTypes = {
    }),
    gameDateLocal: PropTypes.string.isRequired,
    gameTime: PropTypes.string.isRequired,
-};
+}
 
-export default Game;
+export default Game

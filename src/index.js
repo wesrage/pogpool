@@ -1,19 +1,24 @@
-/* eslint-disable react/jsx-filename-extension */
-import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import './index.html';
-import { configureStore } from './store';
-import App from './containers/App';
+import React from 'react'
+import { render } from 'react-dom'
+import { Router, Route, Switch } from 'react-router-dom'
+import { createBrowserHistory } from 'history'
+import qhistory from 'qhistory'
+import { stringify, parse } from 'qs'
+import { ThemeProvider } from 'styled-components'
+import './index.html'
+import Picker from './pages/Picker/Picker'
+import Themes from './common/themes'
 
-const store = configureStore();
+const browserHistory = qhistory(createBrowserHistory(), stringify, parse)
 
 const component = (
-   <Provider store={store}>
-      <App />
-   </Provider>
-);
+   <ThemeProvider theme={Themes.PIT}>
+      <Router history={browserHistory}>
+         <Picker />
+      </Router>
+   </ThemeProvider>
+)
 
-const target = document.getElementById('root');
+const target = document.getElementById('root')
 
-render(component, target);
+render(component, target)

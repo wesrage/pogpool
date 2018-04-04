@@ -1,8 +1,9 @@
-import React, { PropTypes } from 'react';
-import Column from '../../components/Column';
-import Row from '../../components/Row';
-import { Table, Header, Body, Row as TableRow, Cell } from './Table';
-import style from '../../style/standings.scss';
+import PropTypes from 'prop-types'
+import React from 'react'
+import Column from '../../components/Column'
+import Row from '../../components/Row'
+import { Table, Header, Body, Row as TableRow, Cell } from './Table'
+import style from '../../style/standings.scss'
 
 const StandingsTable = ({ contestants }) => (
    <Row>
@@ -49,10 +50,10 @@ const StandingsTable = ({ contestants }) => (
          </Table>
       </Column>
    </Row>
-);
+)
 
 StandingsTable.propTypes = {
    contestants: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
+}
 
-export default StandingsTable;
+export default StandingsTable

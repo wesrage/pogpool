@@ -1,6 +1,7 @@
-import React, { PropTypes } from 'react';
-import styled, { keyframes } from 'styled-components';
-import Done from 'react-icons/lib/md/done';
+import PropTypes from 'prop-types'
+import React from 'react'
+import styled, { keyframes } from 'styled-components'
+import Done from 'react-icons/lib/md/done'
 
 const TileRoot = styled.div`
    display: flex;
@@ -23,7 +24,7 @@ const TileRoot = styled.div`
       box-shadow: 0.25em 0.25em 1em #888;
       filter: none;
    }
-`;
+`
 
 const checkAnimation = keyframes`
    0% {
@@ -37,7 +38,7 @@ const checkAnimation = keyframes`
    100% {
       transform: scale(1);
    }
-`;
+`
 
 const selectedAnimationLarge = keyframes`
    from {
@@ -49,7 +50,7 @@ const selectedAnimationLarge = keyframes`
       width: 2em;
       height: 2em;
    }
-`;
+`
 
 const selectedAnimationMedium = keyframes`
    from {
@@ -61,7 +62,7 @@ const selectedAnimationMedium = keyframes`
       width: 1.5em;
       height: 1.5em;
    }
-`;
+`
 
 const selectedAnimationSmall = keyframes`
    from {
@@ -73,7 +74,7 @@ const selectedAnimationSmall = keyframes`
       width: 1em;
       height: 1em;
    }
-`;
+`
 
 const SelectedRoot = styled.div`
    position: absolute;
@@ -98,7 +99,7 @@ const SelectedRoot = styled.div`
       width: 1em;
       animation: ${selectedAnimationSmall} 100ms;
    }
-`;
+`
 
 const AnimatedCheck = styled(Done)`
    height: 1.5em;
@@ -114,25 +115,34 @@ const AnimatedCheck = styled(Done)`
       height: 0.75em;
       width: 0.75em;
    }
-`;
+`
 
 const Selected = () => (
    <SelectedRoot>
       <AnimatedCheck color="#fff" />
    </SelectedRoot>
-);
+)
+
+const handleKeyboardSelect = onClick => e => {
+   if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      onClick()
+   }
+}
 
 const Tile = ({ className, selected, otherSelected, onClick, children }) => (
    <TileRoot
-     className={className}
-     selected={selected}
-     otherSelected={otherSelected}
-     onClick={onClick}
+      className={className}
+      selected={selected}
+      otherSelected={otherSelected}
+      onClick={onClick}
+      onKeyDown={handleKeyboardSelect(onClick)}
+      tabIndex={0}
    >
       {children}
       {selected && <Selected />}
    </TileRoot>
-);
+)
 
 Tile.propTypes = {
    className: PropTypes.string,
@@ -140,12 +150,12 @@ Tile.propTypes = {
    selected: PropTypes.bool,
    otherSelected: PropTypes.bool,
    onClick: PropTypes.func,
-};
+}
 
 Tile.defaultProps = {
    selected: false,
    otherSelected: false,
    onClick: () => {},
-};
+}
 
-export default Tile;
+export default Tile

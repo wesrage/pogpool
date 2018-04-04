@@ -1,5 +1,6 @@
-import React, { PropTypes } from 'react';
-import Contestant from './Contestant';
+import PropTypes from 'prop-types'
+import React from 'react'
+import Contestant from './Contestant'
 
 const ContestantList = ({ contestants, maxPoints }) => (
    <div>
@@ -11,11 +12,11 @@ const ContestantList = ({ contestants, maxPoints }) => (
          />
       ))}
    </div>
-);
+)
 
 ContestantList.propTypes = {
    contestants: PropTypes.arrayOf(PropTypes.object).isRequired,
    maxPoints: PropTypes.number.isRequired,
-};
+}
 
-export default ContestantList;
+export default ContestantList

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 export const Cell = props => (
    <div {...props} style={{
@@ -8,7 +8,7 @@ export const Cell = props => (
    }}>
       {props.children}
    </div>
-);
+)
 
 export const Table = props => (
    <div {...props} style={{
@@ -18,7 +18,7 @@ export const Table = props => (
    }}>
       {props.children}
    </div>
-);
+)
 
 export const Header = props => (
    <div {...props} style={{
@@ -30,7 +30,7 @@ export const Header = props => (
    }}>
       {props.children}
    </div>
-);
+)
 
 export const Row = props => (
    <div {...props} style={{
@@ -40,7 +40,7 @@ export const Row = props => (
    }}>
       {props.children}
    </div>
-);
+)
 
 export const Body = props => (
    <div {...props} style={{
@@ -49,4 +49,4 @@ export const Body = props => (
    }}>
       {props.children}
    </div>
-);
+)

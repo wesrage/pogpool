@@ -55,6 +55,7 @@ const Info = styled.div`
 `
 
 const Team = styled.div`
+   display: flex;
    padding-left: 0.25em;
 `
 
@@ -115,6 +116,7 @@ export default class PlayerTile extends React.Component {
       otherSelected: PropTypes.bool,
       showPhoto: PropTypes.bool,
    }
+
    static defaultProps = {
       selected: false,
       otherSelected: false,
@@ -131,20 +133,23 @@ export default class PlayerTile extends React.Component {
               otherSelected={otherSelected}
               onClick={() => this.props.onSelect(id)}
             >
-               {this.props.showPhoto &&
-                  <Headshot alt={`${fullDisplayName} Headshot`} src={headshotImageUrl} />}
+               {this.props.showPhoto && (
+                  <Headshot alt={`${fullDisplayName} Headshot`} src={headshotImageUrl} />
+               )}
                <Media query="(max-width: 45em)">
-                  {matches =>
-                     matches &&
-                     <AbsoluteLogoWrapper><Logo team={team} dark /></AbsoluteLogoWrapper>}
+                  {matches => matches && (
+                     <AbsoluteLogoWrapper>
+                        <Logo team={team} dark />
+                     </AbsoluteLogoWrapper>
+                  )}
                </Media>
                <Info color={colors[team][0]}>
                   <Media query="(max-width: 45em)">
-                     {matches =>
-                        !matches &&
+                     {matches => !matches && (
                         <Team>
                            <Logo team={team} />
-                        </Team>}
+                        </Team>
+                     )}
                   </Media>
                   <Name>{fullDisplayName}</Name>
                </Info>

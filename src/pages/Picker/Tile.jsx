@@ -17,6 +17,7 @@ const TileRoot = styled.div`
    border-radius: 0.125em;
    position: relative;
    height: 100%;
+   justify-content: space-between;
 
    &:hover {
       opacity: 1;

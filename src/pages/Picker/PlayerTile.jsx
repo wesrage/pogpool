@@ -77,7 +77,7 @@ const AbsoluteLogoWrapper = styled.div`
 
 const Name = styled.span`
    color: #fff;
-   font-size: 1em;
+   font-size: 0.9em;
    padding: 0 0.5em;
    width: 100%;
    user-select: none;

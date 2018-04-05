@@ -1,3 +1,2 @@
-/* eslint-disable global-require */
-require('babel-register');
-require('./server');
+require('babel-register')
+require('./server')

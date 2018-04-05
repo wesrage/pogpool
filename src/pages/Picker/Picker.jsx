@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import produce from 'immer'
+import axios from '../../util/axios'
 import Helmet from 'react-helmet'
 import NotificationSystem from 'react-notification-system'
 import PlayerGroup from './PlayerGroup'
@@ -102,8 +103,30 @@ export default class Picker extends React.Component {
    }
 
    handleSubmit = e => {
-      // TODO
-      console.log('Submitting...')
+      this.setState({
+         submitted: false,
+         submitting: true,
+      })
+      const payload = {
+         ...this.state.user,
+         ...this.state.picks,
+      }
+      axios.put('/picks', payload)
+         .then(this.submitSuccess, this.submitFailure)
+   }
+
+   submitSuccess = () => {
+      this.setState({
+         submitted: true,
+         submitting: false,
+      })
+   }
+
+   submitFailure = ({ message }) => {
+      this.setState({
+         submitting: false,
+         submitError: message,
+      })
    }
 
    persist = () => {

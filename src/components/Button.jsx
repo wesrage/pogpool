@@ -12,7 +12,6 @@ const StyledButton = styled.button`
    padding: 0.25em 1em;
    height: 2em;
    font-size: 2em;
-   cursor: ${props => props.disabled ? 'default' : 'pointer'};
    transition: all 300ms;
    opacity: ${props => (props.loading || !props.disabled) ? 1 : 0.5};
    margin-bottom: 0.5em;

@@ -10,7 +10,6 @@ const TileRoot = styled.div`
    margin: 0 auto;
    filter: ${props => props.otherSelected ? 'grayscale(100%)' : 'none'};
    opacity: ${props => props.selected ? 1 : 0.8};
-   cursor: pointer;
    box-shadow: ${props => props.selected ? '3px 3px 15px #888' : '1px 1px 5px #888'};
    transform: scale(${props => props.selected ? 1.05 : props.otherSelected ? 0.9 : 1});
    transition: all 200ms;

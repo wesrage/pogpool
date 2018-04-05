@@ -28,7 +28,7 @@ const TileRoot = styled.div`
          : 'scale(1.05)'
       };
       box-shadow: ${props => props.selected
-         ? '0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)'
+         ? '0 16px 38px rgba(0,0,0,0.30), 0 12px 12px rgba(0,0,0,0.22)'
          : '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)'
       };
       filter: none;

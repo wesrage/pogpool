@@ -12,7 +12,7 @@ export default {
    DET: ['#c8102e', '#fff'],
    EDM: ['#041e42', '#fc4c02'],
    FLA: ['#041e42', '#c8102e', '#b9975b'],
-   LAK: ['#000', '#a2aaad', '#fff'],
+   LAK: ['#a2aaad', '#000', '#fff'],
    MIN: ['#a6192e', '#154734', '#eaaa00', '#ddcba4'],
    MTL: ['#a6192e', '#001e62'],
    NSH: ['#ffb81c', '#041e42', '#fff'],

@@ -10,9 +10,12 @@ const TileRoot = styled.div`
    margin: 0 auto;
    filter: ${props => props.otherSelected ? 'grayscale(100%)' : 'none'};
    opacity: ${props => props.selected ? 1 : 0.8};
-   box-shadow: ${props => props.selected ? '3px 3px 15px #888' : '1px 1px 5px #888'};
+   box-shadow: ${props => props.selected
+      ? '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)'
+      : '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)'
+   };
    transform: scale(${props => props.selected ? 1.05 : props.otherSelected ? 0.9 : 1});
-   transition: all 200ms;
+   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
    border-radius: 0.125em;
    position: relative;
    height: 100%;
@@ -20,8 +23,14 @@ const TileRoot = styled.div`
 
    &:hover {
       opacity: 1;
-      transform: scale(1.05);
-      box-shadow: 0.25em 0.25em 1em #888;
+      transform: ${props => props.selected
+         ? 'scale(1.1)'
+         : 'scale(1.05)'
+      };
+      box-shadow: ${props => props.selected
+         ? '0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)'
+         : '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)'
+      };
       filter: none;
    }
 `

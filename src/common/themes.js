@@ -1,6 +1,6 @@
 export default {
    PIT: {
-      main: '#cfc493',
-      accent: '#ffb81c',
+      main: '#fcb514',
+      accent: '#cfc493',
    },
 }

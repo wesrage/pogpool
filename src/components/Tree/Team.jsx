@@ -67,7 +67,7 @@ export default class Team extends React.Component {
                matches ? <span>{teams[id].locationName}</span> : <span>{teams[id].fullName}</span>}
          </Media>
       )
-      const color = colors[id][0]
+      const color = colors[id]
       return (
          <TeamRoot color={color} right={right}>
             <Seed color={color} right={right}>{seed}</Seed>

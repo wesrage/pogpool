@@ -58,7 +58,7 @@ export default class TeamTile extends React.Component {
               otherSelected={otherSelected}
               onClick={() => onSelect(id)}
             >
-               <TileContents color={colors[id][0]}>
+               <TileContents color={colors[id]}>
                   <Logo team={id} full />
                </TileContents>
             </StyledTile>

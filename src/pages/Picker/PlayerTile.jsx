@@ -143,7 +143,7 @@ export default class PlayerTile extends React.Component {
                      </AbsoluteLogoWrapper>
                   )}
                </Media>
-               <Info color={colors[team][0]}>
+               <Info color={colors[team]}>
                   <Media query="(max-width: 45em)">
                      {matches => !matches && (
                         <Team>

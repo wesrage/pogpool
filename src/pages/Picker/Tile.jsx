@@ -23,14 +23,8 @@ const TileRoot = styled.div`
 
    &:hover {
       opacity: 1;
-      transform: ${props => props.selected
-         ? 'scale(1.1)'
-         : 'scale(1.05)'
-      };
-      box-shadow: ${props => props.selected
-         ? '0 16px 38px rgba(0,0,0,0.30), 0 12px 12px rgba(0,0,0,0.22)'
-         : '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)'
-      };
+      transform: scale(1.05);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
       filter: none;
    }
 `

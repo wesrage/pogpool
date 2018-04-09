@@ -8,6 +8,7 @@ const db = monk(DB_URL)
 const gamesCollection = db.get('games')
 const statisticsCollection = db.get('statistics')
 const picksCollection = db.get('picks')
+const picksHistoryCollection = db.get('picksHistory')
 
 export function saveGames(games) {
    const promises = games.map(game => gamesCollection.update({
@@ -28,7 +29,7 @@ export function loadFinishedGames() {
    })
 }
 
-export function loadGamesForDays() {
+export function loadGamesForDays(days) {
    return gamesCollection.find({
       gameDateLocal: {
          $in: days,
@@ -90,7 +91,11 @@ export function loadNextGame() {
       .limit(1)
 }
 
-export function savePicks(picks) {
+export async function savePicks(picks) {
+   await picksHistoryCollection.insert({
+      ...picks,
+      timestamp: Date.now()
+   })
    return picksCollection.update({
       firstName: picks.firstName,
       lastName: picks.lastName,

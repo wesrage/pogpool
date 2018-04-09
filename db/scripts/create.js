@@ -1,6 +1,7 @@
 db.createCollection('picks')
 db.createCollection('games')
 db.createCollection('statistics')
+db.createCollection('picksHistory')
 
 db.picks.createIndex(
    { firstName: 1, lastName: 1 },

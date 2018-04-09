@@ -4,7 +4,6 @@ import { savePicks } from '../dao'
 
 export default {
    PUT(req, res) {
-      console.log('Received picks...')
       const validationError = validatePicks(req.body)
       if (validationError) {
          throw new HttpError(400, validationError)

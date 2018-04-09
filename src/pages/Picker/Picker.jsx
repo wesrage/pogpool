@@ -45,8 +45,8 @@ function loadFromStorage(key, defaultValue) {
 
 export default class Picker extends React.Component {
    state = {
-      picks: loadFromStorage('picks', {}),
-      user: loadFromStorage('user', {
+      picks: loadFromStorage('2018-picks', {}),
+      user: loadFromStorage('2018-user', {
          firstName: '',
          lastName: '',
       }),
@@ -130,8 +130,8 @@ export default class Picker extends React.Component {
    }
 
    persist = () => {
-      localStorage.setItem('picks', JSON.stringify(this.state.picks))
-      localStorage.setItem('user', JSON.stringify(this.state.user))
+      localStorage.setItem('2018-picks', JSON.stringify(this.state.picks))
+      localStorage.setItem('2018-user', JSON.stringify(this.state.user))
    }
 
    renderPlayerGroup = ({ id, players }) => (

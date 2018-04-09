@@ -5,10 +5,11 @@
   "license": "ISC",
   "scripts": {
     "start": "concurrently --kill-others \"npm run dev\" \"npm run dev-api\"",
-    "build": "webpack --verbose --colors --display-error-details --config webpack.config.prod.babel.js",
+    "build": "better-npm-run build",
     "dev": "better-npm-run dev",
     "dev-api": "better-npm-run dev-api",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "prod": "better-npm-run prod-api"
   },
   "betterScripts": {
     "dev": {
@@ -38,6 +39,14 @@
       "command": "node api",
       "env": {
         "API_HOST": "localhost",
+        "API_PORT": 8080,
+        "NODE_ENV": "production"
+      }
+    },
+    "build": {
+      "command": "webpack --verbose --colors --display-error-details --config webpack.config.prod.babel.js",
+      "env": {
+        "API_HOST": "api.pog.esley.ca",
         "API_PORT": 8080,
         "NODE_ENV": "production"
       }
@@ -85,6 +94,7 @@
     "style-loader": "^0.20.3",
     "styled-components": "^3.2.5",
     "webpack": "^4.4.1",
+    "webpack-cli": "^2.0.14",
     "webpack-dev-middleware": "^3.1.0",
     "webpack-hot-middleware": "^2.21.2"
   },

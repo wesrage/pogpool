@@ -110,8 +110,19 @@ export async function savePicks(picks) {
 export function loadPicks() {
    return picksCollection.find({}, {
       fields: {
-         _id:0,
+         _id: 0,
          timestamp: 0,
+      },
+   })
+}
+
+export function loadContestants() {
+   return picksCollection.find({}, {
+      fields: {
+         _id: 0,
+         firstName: 1,
+         lastName: 1,
+         sc: 1,
       },
    })
 }

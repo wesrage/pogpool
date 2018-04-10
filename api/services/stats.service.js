@@ -55,7 +55,7 @@ export function decorateStandingsPicks(contestants, groupMaximums, groupMinimums
    }))
 }
 
-export function decorateStandingsWithFinalStatus(contestants, activeCountsByGroup) {
+export function decorateStandingsPicksWithFinalStatus(contestants, activeCountsByGroup) {
    return contestants.map(contestant => ({
       ...contestant,
       picks: obex(contestant.picks)
@@ -85,13 +85,13 @@ export function calculateActiveCountMap(groups, stats, eliminationMap) {
 
 export function calculateGroupMaximums(groups, stats) {
    return obex(_.keyBy(groups, 'id'))
-      .mapValues(group => calculateMaxPointsByGroup(group.players || group.teams))
+      .mapValues(group => calculateMaxPointsByGroup(group.players || group.teams, stats))
       .raw()
 }
 
 export function calculateGroupMinimums(groups, stats) {
    return obex(_.keyBy(groups, 'id'))
-      .mapValues(group => calculateMinPointsByGroup(group.players || group.teams))
+      .mapValues(group => calculateMinPointsByGroup(group.players || group.teams, stats))
       .raw()
 }
 
@@ -109,7 +109,7 @@ export function calculateMinPointsByGroup(group, stats) {
    }, Number.MAX_VALUE)
 }
 
-export function getBestPicksContestant(group, stats) {
+export function getBestPicksContestant(groups, stats) {
    const picks = obex(_.keyBy(groups, 'id'))
       .mapValues(group => getBestPickInGroup(group.players || group.teams, stats))
       .raw()

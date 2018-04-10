@@ -5,7 +5,7 @@ import * as dao from '../dao'
 
 export default {
    GET(req, res) {
-      Promise.all([dao.loadPicks(), dao.loadDailyStats()])
+      return Promise.all([dao.loadPicks(), dao.loadDailyStats()])
          .then(([pickSets, dailyStats]) => {
             let contestants = pickSets.map(pickSet => getContestantFromPicks(pickSet, groups))
             const consolidatedStats = statsService.consolidateDailyStats(dailyStats)

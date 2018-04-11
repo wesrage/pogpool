@@ -77,7 +77,7 @@ export default [
       id: 'f8',
       players: [
          { id: 8478398, firstName: 'Kyle', lastName: 'Connor', team: 'WPG' },
-         { id: 8476460, firstName: 'Nikolaj', lastName: 'Ehlers', team: 'WPG' },
+         { id: 8477940, firstName: 'Nikolaj', lastName: 'Ehlers', team: 'WPG' },
          { id: 8475793, firstName: 'Ryan', lastName: 'Johansen', team: 'NSH' },
          { id: 8476468, firstName: 'J.T.', lastName: 'Miller', team: 'TBL' },
          { id: 8474068, firstName: 'Kyle', lastName: 'Turris', team: 'NSH' },

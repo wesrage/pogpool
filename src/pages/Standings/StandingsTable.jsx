@@ -15,10 +15,19 @@ const CenteredCell = styled(Cell)`
    text-align: center;
 `
 
+const StyledTable = styled(Table)`
+   font-size: 0.8em;
+   margin-bottom: 2em;
+
+   @media(max-width: 45em) {
+      font-size: 0.7em;
+   }
+`
+
 const StandingsTable = ({ contestants }) => (
    <Row>
-      <Column xs={12} md={6} mdOffset={3}>
-         <Table style={{ marginBottom: '2em' }}>
+      <Column xs={12} md={8} mdOffset={2}>
+         <StyledTable>
             <Header>
                <TableRow>
                   <Cell colSpan={3}></Cell>
@@ -55,7 +64,7 @@ const StandingsTable = ({ contestants }) => (
                   </a>
                ))}
             </Body>
-         </Table>
+         </StyledTable>
       </Column>
    </Row>
 );

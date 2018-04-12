@@ -25,7 +25,8 @@ export default class Standings extends React.Component {
       return axios.get('/standings')
          .then(response => {
             this.setState({
-               contestants: response.data,
+               contestants: response.data.standings,
+               maxPoints: response.data.maxPoints,
                loadingStandings: false,
             })
          })

@@ -32,12 +32,11 @@ export default {
                decoratedStandings,
                activeCountsByGroup,
             )
-            if (process.env.NODE_ENV === 'production') {
-               decoratedStandings = decoratedStandings.filter(
-                  contestant => contestant.firstName !== 'Bizzaro',
-               )
+            const maxPoints = Math.max(...Object.values(groupMaximums))
+            return {
+               standings: decoratedStandings,
+               maxPoints,
             }
-            return decoratedStandings
          })
    }
 }

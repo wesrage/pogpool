@@ -140,17 +140,11 @@ export function updateStatsForDays(dateStrings) {
 }
 
 function update() {
-   const firstDay = moment('2018-04-11')
-   const lastDay = moment()
-   const allDays = []
-   for (
-      let currentDay = firstDay;
-      !currentDay.isAfter(lastDay);
-      currentDay = currentDay.clone().add(1, 'day')
-   ) {
-      allDays.push(currentDay)
-   }
-
+   const allDays = [
+      moment().subtract(2, 'day'),
+      moment().subtract(1, 'day'),
+      moment(),
+   ]
    updateSchedule(2017, Seasons.PLAYOFFS).then(() =>
       updateStatsForDays(allDays.map(day => day.format('YYYY-MM-DD'))),
    )

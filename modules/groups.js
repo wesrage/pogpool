@@ -399,7 +399,7 @@ export default [
          {
             id: 'WPG',
             fullName: 'Winnipeg Jets',
-            lastName: 'Winnipeg',
+            locationName: 'Winnipeg',
             teamName: 'Jets',
             goalies: [
                { firstName: 'Connor', lastName: 'Hellebuyck' },

@@ -418,7 +418,7 @@ export default [
             teamName: 'Penguins',
             goalies: [
                { firstName: 'Matt', lastName: 'Murray' },
-               { firstName: 'Tristan', lastName: 'Jarry' },
+               { firstName: 'Casey', lastName: 'DeSmith' },
             ],
          },
          {
@@ -447,8 +447,8 @@ export default [
             locationName: 'Washington',
             teamName: 'Capitals',
             goalies: [
-               { firstName: 'Braden', lastName: 'Holtby' },
                { firstName: 'Philipp', lastName: 'Grubauer' },
+               { firstName: 'Braden', lastName: 'Holtby' },
             ],
          },
       ],

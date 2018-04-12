@@ -62,7 +62,7 @@ export function saveStats(dateString, stats) {
          .mapKeys(key => `stats.${key}`)
          .raw()
       : {}
-   if (Object.keys(stats).length) {
+   if (!Object.keys(stats).length) {
       return statisticsCollection.update({
          dateString,
          stats: {

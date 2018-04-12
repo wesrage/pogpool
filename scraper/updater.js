@@ -124,7 +124,7 @@ export function updateStatsForDays(dateStrings) {
          ...acc,
          [game.gameDateLocal]: {
             ...acc[game.gameDateLocal],
-            ...gate.stats,
+            ...game.stats,
          },
       }), {})
       return Promise.all([
@@ -139,17 +139,17 @@ export function updateStatsForDays(dateStrings) {
    })
 }
 
-const firstDay = moment('2017-04-12')
-const lastDay = moment('2017-06-15')
+const firstDay = moment('2018-04-11')
+const lastDay = moment('2018-04-11')
 const allDays = []
 for (
-   let currentDay = firstDay
-   !currentDay.isAfter(lastDay)
+   let currentDay = firstDay;
+   !currentDay.isAfter(lastDay);
    currentDay = currentDay.clone().add(1, 'day')
 ) {
    allDays.push(currentDay)
 }
 
-updateSchedule(2016, Seasons.PLAYOFFS).then(() =>
+updateSchedule(2017, Seasons.PLAYOFFS).then(() =>
    updateStatsForDays(allDays.map(day => day.format('YYYY-MM-DD'))),
 )

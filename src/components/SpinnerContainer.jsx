@@ -1,14 +1,20 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import Spinner from './Spinner'
-import layout from '../style/layout.scss'
+
+import styled from 'styled-components'
+
+const Center = styled.div`
+   left: 50%;
+   position: absolute;
+   top: 50%;
+   transform: translate(-50%, -50%);
+`
 
 const renderSpinner = () => (
-   <div className={layout.centerParent}>
-      <div className={layout.center}>
-         <Spinner />
-      </div>
-   </div>
+   <Center>
+      <Spinner />
+   </Center>
 )
 
 const SpinnerContainer = ({ children, loading }) => (

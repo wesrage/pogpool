@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import from 'react'
+import React from 'react'
 import classnames from 'classnames'
 import bootstrap from '../style/bootstrap/bootstrap.scss'
 

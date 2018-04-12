@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
-import React from 'react'
-import PieChart from '../../components/PieChart'
-import TeamPieInfo from './TeamPieInfo'
-import styled from 'styled-components' 
-import style from '../../style/standings.scss'
+import React from 'react';
+import PieChart from '../../components/PieChart';
+import TeamPieInfo from './TeamPieInfo';
+import style from '../../style/standings.scss';
+import layout from '../../style/layout.scss';
 
 export default class TeamPie extends React.Component {
    static propTypes = {
@@ -11,19 +11,19 @@ export default class TeamPie extends React.Component {
       data: PropTypes.shape().isRequired,
       maxPoints: PropTypes.number.isRequired,
       radius: PropTypes.number.isRequired,
-   }
+   };
 
    state = {
       hoveredTeam: null,
    }
 
    handleSliceMouseover = ({ data }) => {
-      this.setState({ hoveredTeam: data })
-   }
+      this.setState({ hoveredTeam: data });
+   };
 
    handleSliceMouseout = () => {
-      this.setState({ hoveredTeam: null })
-   }
+      this.setState({ hoveredTeam: null });
+   };
 
    render() {
       return (
@@ -40,6 +40,6 @@ export default class TeamPie extends React.Component {
                {this.state.hoveredTeam && <TeamPieInfo {...this.state.hoveredTeam} />}
             </div>
          </div>
-      )
+      );
    }
 }

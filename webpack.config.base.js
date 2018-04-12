@@ -1,6 +1,6 @@
 import path from 'path'
 import webpack from 'webpack'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
 export default {
    entry: [
@@ -31,11 +31,17 @@ export default {
                },
             },
          }, {
-            test: /\.css$/,
-            use: ExtractTextPlugin.extract({
-               fallback: 'style-loader',
-               use: 'css-loader',
-            }),
+            test: /\.scss$/,
+            use: [
+               MiniCssExtractPlugin.loader,
+               {
+                  loader: 'css-loader',
+                  options: {
+                     modules: true,
+                  },
+               },
+               'sass-loader',
+            ],
          }, {
             test: /\.html$/,
             use: {
@@ -54,7 +60,7 @@ export default {
       ],
    },
    plugins: [
-      new ExtractTextPlugin({
+      new MiniCssExtractPlugin({
          filename: 'bundle.css',
       }),
       new webpack.DefinePlugin({

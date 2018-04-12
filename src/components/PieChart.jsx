@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import cx from 'classnames'
-import d3 from 'd3'
+import * as d3 from 'd3'
 import _ from 'lodash'
 import style from '../style/standings.scss'
 import nhlStyle from '../style/nhl.scss'
+import teamInfo from '../../modules/teams'
 
-function createPie({ data, teamInfo, target, radius, maxPoints }) {
+function createPie({ data, target, radius, maxPoints }) {
    let teams = Object.keys(data).map(team => ({
       team,
       picks: data[team].picks,
@@ -52,7 +53,6 @@ function createPie({ data, teamInfo, target, radius, maxPoints }) {
 export default class PieChart extends React.Component {
    static propTypes = {
       data: PropTypes.shape().isRequired,
-      teamInfo: PropTypes.objectOf(PropTypes.object).isRequired,
       maxPoints: PropTypes.number.isRequired,
       radius: PropTypes.number.isRequired,
       onSliceMouseover: PropTypes.func.isRequired,
@@ -65,7 +65,6 @@ export default class PieChart extends React.Component {
 
    shouldComponentUpdate(nextProps) {
       return !_.isEqual(nextProps.maxPoints, this.props.maxPoints) ||
-         !_.isEqual(nextProps.teamInfo, this.props.teamInfo) ||
          !_.isEqual(nextProps.data, this.props.data)
    }
 
@@ -77,7 +76,6 @@ export default class PieChart extends React.Component {
       const arcs = createPie({
          target: this.pie,
          data: this.props.data,
-         teamInfo: this.props.teamInfo,
          radius: this.props.radius,
          maxPoints: this.props.maxPoints,
       })

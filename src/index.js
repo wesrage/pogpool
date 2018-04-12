@@ -7,6 +7,7 @@ import { stringify, parse } from 'qs'
 import { ThemeProvider } from 'styled-components'
 import './index.html'
 import Picker from './pages/Picker/Picker'
+import Standings from './pages/Standings/Standings'
 import Themes from './common/themes'
 
 const browserHistory = qhistory(createBrowserHistory(), stringify, parse)
@@ -14,7 +15,7 @@ const browserHistory = qhistory(createBrowserHistory(), stringify, parse)
 const component = (
    <ThemeProvider theme={Themes.PIT}>
       <Router history={browserHistory}>
-         <Picker />
+         <Standings />
       </Router>
    </ThemeProvider>
 )

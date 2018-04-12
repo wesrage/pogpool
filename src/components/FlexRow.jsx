@@ -1,14 +1,7 @@
-import PropTypes from 'prop-types'
-import React from 'react'
-import classnames from 'classnames'
-import layout from '../style/layout.scss'
+import styled from 'styled-components'
 
-const FlexRow = (props) => (
-   <div {...props} className={classnames(props.className, layout.flexRow)}/>
-)
-
-FlexRow.propTypes = {
-   className: PropTypes.string,
-}
-
-export default FlexRow
+export default styled.div`
+   display: flex;
+   flex-flow: row wrap;
+   justify-content: space-around;
+`

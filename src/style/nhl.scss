@@ -4,9 +4,13 @@
    color: #fff;
 
    &.ANA { background-color: $ANA; fill: $ANA; }
-   &.BOS { background-color: $BOS; fill: $BOS; }
+   &.ARI { background-color: $ARI; fill: $ARI; }
+   &.BOS { background-color: $BOS; fill: $BOS; color: #000; }
+   &.BUF { background-color: $BUF; fill: $BUF; }
    &.CGY { background-color: $CGY; fill: $CGY; }
+   &.CAR { background-color: $CAR; fill: $CAR; }
    &.CHI { background-color: $CHI; fill: $CHI; }
+   &.COL { background-color: $COL; fill: $COL; }
    &.CBJ { background-color: $CBJ; fill: $CBJ; }
    &.DAL { background-color: $DAL; fill: $DAL; }
    &.DET { background-color: $DET; fill: $DET; }
@@ -16,6 +20,7 @@
    &.MIN { background-color: $MIN; fill: $MIN; }
    &.MTL { background-color: $MTL; fill: $MTL; }
    &.NSH { background-color: $NSH; fill: $NSH; color: #000; }
+   &.NJD { background-color: $NJD; fill: $NJD; }
    &.NYI { background-color: $NYI; fill: $NYI; }
    &.NYR { background-color: $NYR; fill: $NYR; }
    &.OTT { background-color: $OTT; fill: $OTT; }
@@ -25,5 +30,8 @@
    &.STL { background-color: $STL; fill: $STL; }
    &.TBL { background-color: $TBL; fill: $TBL; }
    &.TOR { background-color: $TOR; fill: $TOR; }
+   &.VAN { background-color: $VAN; fill: $VAN; }
+   &.VGK { background-color: $VGK; fill: $VGK; }
    &.WSH { background-color: $WSH; fill: $WSH; }
+   &.WPG { background-color: $WPG; fill: $WPG; }
 }

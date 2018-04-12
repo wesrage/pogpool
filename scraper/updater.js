@@ -139,17 +139,23 @@ export function updateStatsForDays(dateStrings) {
    })
 }
 
-const firstDay = moment('2018-04-11')
-const lastDay = moment('2018-04-11')
-const allDays = []
-for (
-   let currentDay = firstDay;
-   !currentDay.isAfter(lastDay);
-   currentDay = currentDay.clone().add(1, 'day')
-) {
-   allDays.push(currentDay)
+function update() {
+   const firstDay = moment('2018-04-11')
+   const lastDay = moment()
+   const allDays = []
+   for (
+      let currentDay = firstDay;
+      !currentDay.isAfter(lastDay);
+      currentDay = currentDay.clone().add(1, 'day')
+   ) {
+      allDays.push(currentDay)
+   }
+
+   updateSchedule(2017, Seasons.PLAYOFFS).then(() =>
+      updateStatsForDays(allDays.map(day => day.format('YYYY-MM-DD'))),
+   )
 }
 
-updateSchedule(2017, Seasons.PLAYOFFS).then(() =>
-   updateStatsForDays(allDays.map(day => day.format('YYYY-MM-DD'))),
-)
+const UPDATE_INTERVAL = 30 * 60 * 1000
+update()
+setInterval(update, UPDATE_INTERVAL)

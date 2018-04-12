@@ -1,6 +1,7 @@
 import obex from 'obex'
 import _ from 'lodash'
 import { Scoring } from '../config'
+import teams from '../../modules/teams'
 
 export function consolidateDailyStats(dailyStats) {
    const result = {}
@@ -37,8 +38,23 @@ export function generateStandings(contestants, stats) {
          ...contestant,
          picks,
          points: calculateTotalPointsForContestant(picks),
+         breakdown: getBreakdown(picks),
       }
    })
+}
+
+function getBreakdown(picks) {
+   return Object.values(picks).reduce((acc, pick) => {
+      const team = pick.team || pick.id
+      const division = teams[team].division
+      const conference = teams[team].conference
+      return {
+         ...acc,
+         [team]: (acc[team] || 0) + 1,
+         [division]: (acc[division] || 0) + 1,
+         [conference]: (acc[conference] || 0) + 1,
+      }
+   }, {})
 }
 
 export function decorateStandingsPicks(contestants, groupMaximums, groupMinimums, eliminationMap) {

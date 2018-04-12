@@ -1,52 +1,25 @@
 import React from 'react';
+import styled from 'styled-components'
 
-export const Cell = props => (
-   <div {...props} style={{
-      ...props.style,
-      display: 'table-cell',
-      padding: '0.5em 1em',
-   }}>
-      {props.children}
-   </div>
-);
+export const Cell = styled.td`
+   border-left: ${props => props.borderLeft ? '1px solid #ccc' : 'none'};
+   border-right: ${props => props.borderRight ? '1px solid #ccc' : 'none'};
+   padding: 0.5em 1em;
+`
 
-export const Table = props => (
-   <div {...props} style={{
-      ...props.style,
-      display: 'table',
-      width: '100%',
-   }}>
-      {props.children}
-   </div>
-);
+export const Table = styled.table`
+   width: 100%;
+`
 
-export const Header = props => (
-   <div {...props} style={{
-      ...props.style,
-      display: 'table-header-group',
-      backgroundColor: '#333',
-      color: '#eee',
-      fontWeight: 'bold',
-   }}>
-      {props.children}
-   </div>
-);
+export const Header = styled.thead`
+   background-color: #333;
+   color: #eee;
+   font-weight: bold;
+`
 
-export const Row = props => (
-   <div {...props} style={{
-      ...props.style,
-      borderBottom: '1px solid #ccc',
-      display: 'table-row',
-   }}>
-      {props.children}
-   </div>
-);
+export const Row = styled.tr`
+   border-bottom: 1px solid #ccc;
+`
 
-export const Body = props => (
-   <div {...props} style={{
-      ...props.style,
-      display: 'table-row-group',
-   }}>
-      {props.children}
-   </div>
-);
+export const Body = styled.tbody``
+

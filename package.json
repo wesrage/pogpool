@@ -9,7 +9,8 @@
     "dev": "better-npm-run dev",
     "dev-api": "better-npm-run dev-api",
     "test": "jest --watch",
-    "prod": "better-npm-run prod-api"
+    "prod": "better-npm-run prod-api",
+    "updater": "node scraper"
   },
   "betterScripts": {
     "dev": {

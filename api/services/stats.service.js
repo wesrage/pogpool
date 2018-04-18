@@ -125,6 +125,17 @@ export function calculateMinPointsByGroup(group, stats) {
    }, Number.MAX_VALUE)
 }
 
+export function calculateExpectedValue(groups, stats) {
+   return Object.keys(groups).reduce((sum, key) => {
+      const group = groups[key]
+      const groupSum = groups.reduce((acc, pick) => {
+         const pickStats = stats[pick.id] || {}
+         return calculateTotalPointsForPick(pickStats)
+      }, 0)
+      return groupSum / group.length
+   }, 0)
+}
+
 export function getBestPicksContestant(groups, stats) {
    const picks = obex(_.keyBy(groups, 'id'))
       .mapValues(group => getBestPickInGroup(group.players || group.teams, stats))

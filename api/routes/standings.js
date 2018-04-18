@@ -32,9 +32,11 @@ export default {
                decoratedStandings,
                activeCountsByGroup,
             )
+            expectedValue = statsService.calculateExpectedValue(groups, consolidatedStats)
             const maxPoints = Math.max(...Object.values(groupMaximums))
             return {
                standings: decoratedStandings,
+               expectedValue,
                maxPoints,
             }
          })

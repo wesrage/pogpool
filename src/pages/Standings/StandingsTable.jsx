@@ -24,6 +24,11 @@ const StyledTable = styled(Table)`
    }
 `
 
+const TableBodyRow = styled.a`
+   ${props => props.special && `background-color: ${props.theme.main};`}
+   ${props => props.special && `color: #fff;`}
+`
+
 const StandingsTable = ({ contestants }) => (
    <Row>
       <Column xs={12} md={8} mdOffset={2}>
@@ -46,28 +51,57 @@ const StandingsTable = ({ contestants }) => (
             </Header>
             <Body>
                {contestants.map(contestant => (
-                  <a
-                    key={`${contestant.firstName} ${contestant.lastName}`}
-                    href={`#${contestant.firstName}${contestant.lastName}`}
-                    className={style.standingsRow}
-                  >
-                     <Cell>{contestant.firstName} {contestant.lastName}</Cell>
-                     <NumberCell>{contestant.points}</NumberCell>
-                     <NumberCell>
-                        {Object.keys(contestant.picks)
-                           .filter(groupName => !contestant.picks[groupName].out).length}
-                     </NumberCell>
-                     <NumberCell borderLeft>{contestant.breakdown.A}</NumberCell>
-                     <NumberCell>{contestant.breakdown.M}</NumberCell>
-                     <NumberCell borderLeft>{contestant.breakdown.C}</NumberCell>
-                     <NumberCell>{contestant.breakdown.P}</NumberCell>
-                  </a>
+                  contestant.picks ? (
+                     <ContestantRow
+                        key={`${contestant.firstName} ${contestant.lastName}`}
+                        contestant={contestant}
+                     />
+                  ) : (
+                     <NoLinkRow
+                        key={`${contestant.firstName} ${contestant.lastName}`}
+                        contestant={contestant}
+                     />
+                  )
                ))}
             </Body>
          </StyledTable>
       </Column>
    </Row>
 );
+
+const NoLinkRow = ({ contestant }) => (
+   <TableBodyRow
+      className={style.standingsRow}
+      special={contestant.special}
+   >
+      <Cell>{contestant.firstName} {contestant.lastName}</Cell>
+      <NumberCell>{Math.floor(contestant.points)}</NumberCell>
+      <NumberCell/>
+      <NumberCell/>
+      <NumberCell/>
+      <NumberCell/>
+      <NumberCell/>
+   </TableBodyRow>
+)
+
+const ContestantRow = ({ contestant }) => (
+   <TableBodyRow
+      href={`#${contestant.firstName}${contestant.lastName}`}
+      className={style.standingsRow}
+      special={contestant.special}
+   >
+      <Cell>{contestant.firstName} {contestant.lastName}</Cell>
+      <NumberCell>{Math.floor(contestant.points)}</NumberCell>
+      <NumberCell>
+         {Object.keys(contestant.picks)
+            .filter(groupName => !contestant.picks[groupName].out).length}
+      </NumberCell>
+      <NumberCell borderLeft>{contestant.breakdown.A}</NumberCell>
+      <NumberCell>{contestant.breakdown.M}</NumberCell>
+      <NumberCell borderLeft>{contestant.breakdown.C}</NumberCell>
+      <NumberCell>{contestant.breakdown.P}</NumberCell>
+   </TableBodyRow>
+)
 
 StandingsTable.propTypes = {
    contestants: PropTypes.arrayOf(PropTypes.object).isRequired,

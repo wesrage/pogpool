@@ -126,13 +126,13 @@ export function calculateMinPointsByGroup(group, stats) {
 }
 
 export function calculateExpectedValue(groups, stats) {
-   return Object.keys(groups).reduce((sum, key) => {
-      const group = groups[key]
-      const groupSum = groups.reduce((acc, pick) => {
+   return groups.reduce((sum, group) => {
+      const picks = group.players || group.teams
+      const groupSum = picks.reduce((acc, pick) => {
          const pickStats = stats[pick.id] || {}
-         return calculateTotalPointsForPick(pickStats)
+         return acc + calculateTotalPointsForPick(pickStats, group.id)
       }, 0)
-      return groupSum / group.length
+      return sum + (groupSum / picks.length)
    }, 0)
 }
 

@@ -47,6 +47,9 @@ function buildTitleText({ best, worst, out, final }) {
    if (worst && !final) {
       return null;
    }
+   if (!worst && !best) {
+      return null;
+   }
    if (out && !best && !worst) {
       return 'Eliminated';
    }

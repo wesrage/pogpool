@@ -141,8 +141,8 @@ export function getBestPicksContestant(groups, stats) {
       .mapValues(group => getBestPickInGroup(group.players || group.teams, stats))
       .raw()
    return {
-      firstName: 'Best',
-      lastName: 'Picks',
+      firstName: 'The',
+      lastName: 'Seer',
       picks,
    }
 }

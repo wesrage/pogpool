@@ -35,8 +35,8 @@ export default class Standings extends React.Component {
 
    render() {
       const rc = {
-         firstName: 'Random',
-         lastName: 'Chance',
+         firstName: 'Chance',
+         lastName: 'The Random',
          special: true,
          points: this.state.expectedValue,
       }

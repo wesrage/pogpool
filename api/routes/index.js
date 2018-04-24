@@ -1,7 +1,6 @@
 import handler from '../handler'
 import picks from './picks'
 import standings from './standings'
-import teams from './teams'
 import games from './games'
 import contestants from './contestants'
 

@@ -23,7 +23,7 @@ export default {
    CBJ: {
       conference: 'E',
       division: 'M',
-      seed: 3,
+      seed: 4,
       place: 'Columbus',
       name: 'Blue Jackets',
    },
@@ -50,7 +50,7 @@ export default {
    },
    NJD: {
       conference: 'E',
-      division: 'M',
+      division: 'A',
       seed: 4,
       place: 'New Jersey',
       name: 'Devils',

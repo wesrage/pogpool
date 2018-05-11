@@ -32,7 +32,7 @@ const Button = ({ ...buttonProps, children, loading = false, disabled = false, o
      disabled={disabled}
      onClick={disabled ? () => {} : onClick}
    >
-      {loading ? <Spinner/> : children}
+      {loading ? <Spinner white /> : children}
    </StyledButton>
 )
 

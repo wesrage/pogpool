@@ -24,7 +24,7 @@ const Dot = styled.div`
    display: inline-block;
    position: absolute;
    top: 0;
-   background-color: #fff;
+   background-color: ${props => props.white ? '#fff' : props.theme.main};
    border-radius: 100%;
    animation: ${bounce} 1s infinite ease-in-out;
 `
@@ -35,9 +35,9 @@ const Dot2 = styled(Dot)`
    animation-delay: -0.5s;
 `
 
-const Spinner = () => (
+const Spinner = ({ white }) => (
    <Wrapper>
-      <Dot />
+      <Dot white={white} />
       <Dot2 />
    </Wrapper>
 )

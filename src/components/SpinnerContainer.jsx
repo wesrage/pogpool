@@ -11,15 +11,15 @@ const Center = styled.div`
    transform: translate(-50%, -50%);
 `
 
-const renderSpinner = () => (
+const renderSpinner = white => (
    <Center>
-      <Spinner />
+      <Spinner white={white} />
    </Center>
 )
 
-const SpinnerContainer = ({ children, loading }) => (
+const SpinnerContainer = ({ children, loading, white }) => (
    loading
-      ? renderSpinner()
+      ? renderSpinner(white)
       : children()
 )
 

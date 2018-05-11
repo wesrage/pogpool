@@ -24,14 +24,23 @@ const StyledTable = styled(Table)`
    }
 `
 
+const GutterlessRow = styled(Row)`
+   margin: 0;
+
+   > div {
+      padding-left: 0;
+      padding-right: 0;
+   }
+`
+
 const TableBodyRow = styled.a`
    ${props => props.special && `background-color: ${props.theme.main};`}
    ${props => props.special && `color: #fff;`}
 `
 
 const StandingsTable = ({ contestants }) => (
-   <Row>
-      <Column xs={12} md={8} mdOffset={2}>
+   <GutterlessRow>
+      <Column xs={12} md={6} mdOffset={3}>
          <StyledTable>
             <Header>
                <TableRow>
@@ -66,7 +75,7 @@ const StandingsTable = ({ contestants }) => (
             </Body>
          </StyledTable>
       </Column>
-   </Row>
+   </GutterlessRow>
 );
 
 const NoLinkRow = ({ contestant }) => (

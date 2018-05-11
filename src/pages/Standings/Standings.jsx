@@ -53,24 +53,24 @@ export default class Standings extends React.Component {
       return (
          <div>
             <Helmet title="PuckOverGlass 2018" />
-            <Container>
                <SpinnerContainer loading={this.state.loadingStandings}>
                   {() => (
                      <div>
                         <StandingsTable contestants={contestantsWithRandomChance} />
-                        <TeamPieList
-                          contestants={contestants}
-                          maxPoints={this.state.maxPoints}
-                          loading={this.state.loadingTeams || this.state.loadingStandings}
-                        />
-                        <ContestantList
-                          contestants={contestants}
-                          maxPoints={this.state.maxPoints}
-                        />
+                        <Container>
+                           <TeamPieList
+                           contestants={contestants}
+                           maxPoints={this.state.maxPoints}
+                           loading={this.state.loadingTeams || this.state.loadingStandings}
+                           />
+                           <ContestantList
+                           contestants={contestants}
+                           maxPoints={this.state.maxPoints}
+                           />
+                        </Container>
                      </div>
                   )}
                </SpinnerContainer>
-            </Container>
          </div>
       )
    }

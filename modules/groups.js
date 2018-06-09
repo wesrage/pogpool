@@ -69,7 +69,7 @@ export default [
          { id: 8476826, firstName: 'Yanni', lastName: 'Gourde', team: 'TBL' },
          { id: 8478483, firstName: 'Mitchell', lastName: 'Marner', team: 'TOR' },
          { id: 8476483, firstName: 'Rickard', lastName: 'Rakell', team: 'ANA' },
-         { id: 8478420, firstName: 'Mikko', lastName: 'Rantanen', team: 'COL' }, 
+         { id: 8478420, firstName: 'Mikko', lastName: 'Rantanen', team: 'COL' },
          { id: 8470595, firstName: 'Eric', lastName: 'Staal', team: 'MIN' },
       ],
    },
@@ -120,7 +120,7 @@ export default [
          { id: 8475172, firstName: 'Nazem', lastName: 'Kadri', team: 'TOR' },
          { id: 8470621, firstName: 'Corey', lastName: 'Perry', team: 'ANA' },
          { id: 8474037, firstName: 'James', lastName: 'van Riemsdyk', team: 'TOR' },
-         { id: 8475722, firstName: 'Jason', lastName: 'Zucker', team: 'MIN' },        
+         { id: 8475722, firstName: 'Jason', lastName: 'Zucker', team: 'MIN' },
       ],
    },
    {
@@ -248,7 +248,7 @@ export default [
       players: [
          { id: 8475176, firstName: 'Ryan', lastName: 'Ellis', team: 'NSH' },
          { id: 8475167, firstName: 'Victor', lastName: 'Hedman', team: 'TBL' },
-         { id: 8474600, firstName: 'Roman', lastName: 'Josi', team: 'NSH' }, 
+         { id: 8474600, firstName: 'Roman', lastName: 'Josi', team: 'NSH' },
          { id: 8476792, firstName: 'Torey', lastName: 'Krug', team: 'BOS' },
          { id: 8474056, firstName: 'P.K.', lastName: 'Subban', team: 'NSH' },
       ],
@@ -447,8 +447,8 @@ export default [
             locationName: 'Washington',
             teamName: 'Capitals',
             goalies: [
-               { firstName: 'Philipp', lastName: 'Grubauer' },
                { firstName: 'Braden', lastName: 'Holtby' },
+               { firstName: 'Philipp', lastName: 'Grubauer' },
             ],
          },
       ],

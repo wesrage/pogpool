@@ -5,8 +5,8 @@ import games from './games'
 import contestants from './contestants'
 
 export function createRoutes(app) {
-   // app.put('/picks', handler(picks.PUT))
-   app.get('/standings', handler(standings.GET))
-   app.get('/games', handler(games.GET))
-   app.get('/contestants', handler(contestants.GET))
+  app.put('/picks', handler(picks.PUT))
+  app.get('/standings', handler(standings.GET))
+  app.get('/games', handler(games.GET))
+  app.get('/contestants', handler(contestants.GET))
 }

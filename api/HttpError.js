@@ -1,6 +1,6 @@
 function HttpError(status, message) {
-   this.status = status
-   this.message = message
+  this.status = status
+  this.message = message
 }
 
 HttpError.prototype = Object.create(Error.prototype)

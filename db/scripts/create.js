@@ -3,12 +3,6 @@ db.createCollection('games')
 db.createCollection('statistics')
 db.createCollection('picksHistory')
 
-db.picks.createIndex(
-   { firstName: 1, lastName: 1 },
-   { unique: true }
-)
+db.picks.createIndex({ firstName: 1, lastName: 1 }, { unique: true })
 
-db.statistics.createIndex(
-   { dateString: 1 },
-   { unique: true }
-)
+db.statistics.createIndex({ dateString: 1 }, { unique: true })

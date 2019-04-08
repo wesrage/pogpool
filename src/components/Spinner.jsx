@@ -11,35 +11,35 @@ const bounce = keyframes`
 `
 
 const Wrapper = styled.div`
-   width: 40px;
-   height: 40px;
-   position: relative;
-   text-align: center;
-   animation: ${rotate} 1.0s infinite linear;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  text-align: center;
+  animation: ${rotate} 1s infinite linear;
 `
 
 const Dot = styled.div`
-   width: 60%;
-   height: 60%;
-   display: inline-block;
-   position: absolute;
-   top: 0;
-   background-color: ${props => props.white ? '#fff' : props.theme.main};
-   border-radius: 100%;
-   animation: ${bounce} 1s infinite ease-in-out;
+  width: 60%;
+  height: 60%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  background-color: ${props => (props.white ? '#fff' : props.theme.main)};
+  border-radius: 100%;
+  animation: ${bounce} 1s infinite ease-in-out;
 `
 
 const Dot2 = styled(Dot)`
-   top: auto;
-   bottom: 0;
-   animation-delay: -0.5s;
+  top: auto;
+  bottom: 0;
+  animation-delay: -0.5s;
 `
 
 const Spinner = ({ white }) => (
-   <Wrapper>
-      <Dot white={white} />
-      <Dot2 />
-   </Wrapper>
+  <Wrapper>
+    <Dot white={white} />
+    <Dot2 />
+  </Wrapper>
 )
 
 export default Spinner

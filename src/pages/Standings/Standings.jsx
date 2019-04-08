@@ -11,70 +11,75 @@ import ContestantList from './ContestantList'
 import TeamPieList from './TeamPieList'
 
 export default class Standings extends React.Component {
-   state = {
-      contestants: [],
-      maxPoints: 0,
-      loadingStandings: true,
-   }
+  state = {
+    contestants: [],
+    maxPoints: 0,
+    loadingStandings: true,
+  }
 
-   componentWillMount() {
-      this.loadStandings()
-   }
+  componentWillMount() {
+    this.loadStandings()
+  }
 
-   loadStandings = () => {
-      return axios.get('/standings')
-         .then(response => {
-            this.setState({
-               contestants: response.data.standings,
-               maxPoints: response.data.maxPoints,
-               expectedValue: response.data.expectedValue,
-               loadingStandings: false,
-            })
-         })
-   }
+  loadStandings = () => {
+    return axios.get('/standings').then(response => {
+      this.setState({
+        contestants: response.data.standings,
+        maxPoints: response.data.maxPoints,
+        expectedValue: response.data.expectedValue,
+        loadingStandings: false,
+      })
+    })
+  }
 
-   render() {
-      const rc = {
-         firstName: 'Chance',
-         lastName: 'the Random',
-         special: true,
-         points: this.state.expectedValue,
-      }
-      let contestants = [...this.state.contestants].sort((a, b) => b.points - a.points)
-      const bp = {
-         ...(contestants[0] || {}),
-         special: true,
-      }
-      contestants = [
-         bp,
-         ...contestants.slice(1),
-      ]
-      const contestantsWithRandomChance = [...contestants, rc].sort((a, b) => b.points - a.points)
-      return (
-         <div>
-            <Helmet title="PuckOverGlass 2018" />
-               <SpinnerContainer loading={this.state.loadingStandings}>
-                  {() => (
-                     <div>
-                        <StandingsTable contestants={contestantsWithRandomChance} />
-                        <Container>
-                           <TeamPieList
-                           contestants={contestants}
-                           maxPoints={this.state.maxPoints}
-                           loading={this.state.loadingTeams || this.state.loadingStandings}
-                           />
-                           <ContestantList
-                           contestants={contestants}
-                           maxPoints={this.state.maxPoints}
-                           />
-                        </Container>
-                     </div>
-                  )}
-               </SpinnerContainer>
-         </div>
-      )
-   }
+  render() {
+    const rc = {
+      firstName: 'Chance',
+      lastName: 'the Random',
+      special: true,
+      points: this.state.expectedValue,
+    }
+    let contestants = [...this.state.contestants].sort(
+      (a, b) => b.points - a.points
+    )
+    const bp = {
+      ...(contestants[0] || {}),
+      special: true,
+    }
+    contestants = [bp, ...contestants.slice(1)]
+    const contestantsWithRandomChance = [...contestants, rc].sort(
+      (a, b) => b.points - a.points
+    )
+    return (
+      <div>
+        <Helmet title="PuckOverGlass 2019" />
+        <SpinnerContainer loading={this.state.loadingStandings}>
+          {() => (
+            <div>
+              <StandingsTable contestants={contestantsWithRandomChance} />
+              <Container>
+                <TeamPieList
+                  contestants={contestants}
+                  maxPoints={this.state.maxPoints}
+                  loading={
+                    this.state.loadingTeams || this.state.loadingStandings
+                  }
+                />
+                <ContestantList
+                  contestants={contestants}
+                  maxPoints={this.state.maxPoints}
+                />
+              </Container>
+            </div>
+          )}
+        </SpinnerContainer>
+      </div>
+    )
+  }
 }
 
 const calculateMaxPoints = contestants =>
-   _(contestants).map(({ picks }) => _.map(picks, 'points')).flatten().max() || 0
+  _(contestants)
+    .map(({ picks }) => _.map(picks, 'points'))
+    .flatten()
+    .max() || 0

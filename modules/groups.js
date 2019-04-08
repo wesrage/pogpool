@@ -318,7 +318,7 @@ export default [
     players: [
       { id: 8474581, firstName: 'Jake', lastName: 'Gardiner', team: 'TOR' },
       { id: 8476462, firstName: 'Dougie', lastName: 'Hamilton', team: 'CAR' },
-      { id: 8474162, firstName: 'Jake', lastName: 'Muzzin', team: 'LAK' },
+      { id: 8474162, firstName: 'Jake', lastName: 'Muzzin', team: 'TOR' },
       { id: 8475200, firstName: 'Dmitry', lastName: 'Orlov', team: 'WSH' },
       { id: 8477447, firstName: 'Shea', lastName: 'Theodore', team: 'VGK' },
     ],

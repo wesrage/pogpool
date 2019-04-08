@@ -1,7 +1,7 @@
 if (process.env.NODE_ENV !== 'production') {
-   require('piping')({ hook: true })
+  require('piping')({ hook: true })
 }
 
-require('babel-register')
-require('babel-polyfill')
+require('@babel/register')
+require('@babel/polyfill')
 require('./api')

@@ -10,35 +10,39 @@ const conferenceIds = Object.keys(conferences)
 const ConferenceRoot = styled.div``
 
 const Name = styled(H2)`
-   text-align: ${props => props.right ? 'right' : 'left'}
+  text-align: ${props => (props.right ? 'right' : 'left')};
 `
 
 export default class Conference extends React.Component {
-   static propTypes = {
-      children: PropTypes.node.isRequired,
-      id: PropTypes.oneOf(conferenceIds).isRequired,
-      right: PropTypes.bool,
-   }
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+    id: PropTypes.oneOf(conferenceIds).isRequired,
+    right: PropTypes.bool,
+  }
 
-   static defaultProps = {
-      right: false,
-   }
+  static defaultProps = {
+    right: false,
+  }
 
-   render() {
-      const displayName = (
-         <Media query="(max-width: 45em)">
-            {matches =>
-               matches
-                  ? <span>{conferences[this.props.id].shortName}</span>
-                  : <span>{conferences[this.props.id].fullName}</span>}
-         </Media>
-      )
-      return (
-         <ConferenceRoot>
-            <Name right={this.props.right}>{displayName}</Name>
-            {React.Children.map(this.props.children, child =>
-               React.cloneElement(child, { right: this.props.right }))}
-         </ConferenceRoot>
-      )
-   }
+  render() {
+    const displayName = (
+      <Media query="(max-width: 45em)">
+        {matches =>
+          matches ? (
+            <span>{conferences[this.props.id].shortName}</span>
+          ) : (
+            <span>{conferences[this.props.id].fullName}</span>
+          )
+        }
+      </Media>
+    )
+    return (
+      <ConferenceRoot>
+        <Name right={this.props.right}>{displayName}</Name>
+        {React.Children.map(this.props.children, child =>
+          React.cloneElement(child, { right: this.props.right })
+        )}
+      </ConferenceRoot>
+    )
+  }
 }

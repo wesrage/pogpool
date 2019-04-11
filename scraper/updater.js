@@ -12,6 +12,7 @@ import * as dao from './dao'
 import { getTimeToNextGameStart, renderGameString } from './helpers'
 import { info, error } from './log'
 import { Seasons } from '../modules/constants'
+import Config from '../api/config'
 
 const pretty = new PrettyError()
 
@@ -157,7 +158,7 @@ function update() {
     moment().subtract(1, 'day'),
     moment(),
   ]
-  updateSchedule(2017, Seasons.PLAYOFFS).then(() =>
+  updateSchedule(Config.YEAR, Seasons.PLAYOFFS).then(() =>
     updateStatsForDays(allDays.map(day => day.format('YYYY-MM-DD')))
   )
 }

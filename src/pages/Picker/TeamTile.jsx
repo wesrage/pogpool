@@ -7,11 +7,11 @@ import colors from '../../common/colors'
 import { team as teamPropType } from '../../common/propTypes'
 
 const TileWrapper = styled.div`
-  margin: 0.5em
-   position: relative
-   width: 20%
+  margin: 0.5em;
+  position: relative;
+  width: 20%;
 
-   &:before {
+  &:before {
     display: block;
     content: '';
     width: 100%;

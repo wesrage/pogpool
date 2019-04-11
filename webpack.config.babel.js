@@ -1,12 +1,11 @@
 import path from 'path'
 import webpack from 'webpack'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-
-const __DEV__ = process.env.NODE_ENV !== JSON.stringify('production')
+import CleanWebpackPlugin from 'clean-webpack-plugin'
 
 export default {
-  mode: __DEV__ ? 'development' : 'production',
-  devtool: __DEV__ && 'cheap-module-source-map',
+  mode: 'development',
+  devtool: 'cheap-module-source-map',
   entry: './src/index',
   output: {
     path: path.join(__dirname, 'dist'),
@@ -22,7 +21,11 @@ export default {
           loader: 'babel-loader',
           options: {
             presets: [['@babel/env', { modules: false }], '@babel/react'],
-            plugins: ['emotion', '@babel/plugin-proposal-class-properties'],
+            plugins: [
+              'syntax-dynamic-import',
+              'babel-plugin-styled-components',
+              '@babel/plugin-proposal-class-properties',
+            ],
           },
         },
       },
@@ -67,12 +70,14 @@ export default {
       API_PORT: JSON.stringify(process.env.API_PORT),
     }),
     new webpack.NoEmitOnErrorsPlugin(),
+    new CleanWebpackPlugin(),
   ],
   resolve: {
     modules: ['node_modules'],
     extensions: ['.js', '.jsx'],
   },
   optimization: {
+    namedChunks: true,
     splitChunks: {
       cacheGroups: {
         vendor: {
@@ -84,5 +89,4 @@ export default {
       },
     },
   },
-  mode: 'development',
 }

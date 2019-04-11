@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { team as teamPropType } from '../../common/propTypes'
 import TeamTile from './TeamTile'
+import PlayerTile from './PlayerTile'
 
 const Root = styled.div`
   align-items: center;
@@ -50,8 +51,9 @@ export default class TeamGroup extends React.Component {
         {this.props.teams.map(team => {
           const selected = team.id === this.props.selection
           return (
-            <TeamTile
+            <PlayerTile
               {...team}
+              id={team.goalies[0].id   }
               key={team.id}
               onSelect={this.props.onSelect}
               selected={selected}

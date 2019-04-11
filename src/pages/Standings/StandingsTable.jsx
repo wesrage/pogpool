@@ -117,10 +117,10 @@ const ContestantRow = ({ contestant }) => (
         ).length
       }
     </NumberCell>
-    <NumberCell borderLeft>{contestant.breakdown.A}</NumberCell>
-    <NumberCell>{contestant.breakdown.M}</NumberCell>
-    <NumberCell borderLeft>{contestant.breakdown.C}</NumberCell>
-    <NumberCell>{contestant.breakdown.P}</NumberCell>
+    <NumberCell borderLeft>{contestant.breakdown.A || 0}</NumberCell>
+    <NumberCell>{contestant.breakdown.M || 0}</NumberCell>
+    <NumberCell borderLeft>{contestant.breakdown.C || 0}</NumberCell>
+    <NumberCell>{contestant.breakdown.P || 0}</NumberCell>
   </TableBodyRow>
 )
 

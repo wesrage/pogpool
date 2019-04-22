@@ -61,7 +61,7 @@ export function decorateStandingsPicks(
   contestants,
   groupMaximums,
   groupMinimums,
-  eliminationMap
+  eliminationMap,
 ) {
   return contestants.map(contestant => ({
     ...contestant,
@@ -80,7 +80,7 @@ export function decorateStandingsPicks(
 
 export function decorateStandingsPicksWithFinalStatus(
   contestants,
-  activeCountsByGroup
+  activeCountsByGroup,
 ) {
   return contestants.map(contestant => ({
     ...contestant,
@@ -101,13 +101,13 @@ export function determineFinalStatus(pick, groupActiveCount) {
   )
 }
 
-export function calculateActiveCountMap(groups, stats, eliminationMap) {
+export function calculateActiveCountMap(groups, eliminationMap) {
   return obex(_.keyBy(groups, 'id'))
     .mapValues(
       group =>
         (group.players || group.teams).filter(
-          pick => !eliminationMap[pick.team]
-        ).length
+          pick => !eliminationMap[pick.team],
+        ).length,
     )
     .raw()
 }
@@ -115,7 +115,7 @@ export function calculateActiveCountMap(groups, stats, eliminationMap) {
 export function calculateGroupMaximums(groups, stats) {
   return obex(_.keyBy(groups, 'id'))
     .mapValues(group =>
-      calculateMaxPointsByGroup(group.players || group.teams, stats)
+      calculateMaxPointsByGroup(group.players || group.teams, stats),
     )
     .raw()
 }
@@ -123,7 +123,7 @@ export function calculateGroupMaximums(groups, stats) {
 export function calculateGroupMinimums(groups, stats) {
   return obex(_.keyBy(groups, 'id'))
     .mapValues(group =>
-      calculateMinPointsByGroup(group.players || group.teams, stats)
+      calculateMinPointsByGroup(group.players || group.teams, stats),
     )
     .raw()
 }
@@ -164,6 +164,66 @@ export function getBestPicksContestant(groups, stats) {
   }
 }
 
+export function getMostCommonPicksContestant(groups, contestants) {
+  const picks = obex(_.keyBy(groups, 'id'))
+    .mapValues(group => getMostCommonPickInGroup(group, contestants))
+    .raw()
+  return {
+    firstName: 'Mr.',
+    lastName: 'Popular',
+    picks,
+    special: true,
+  }
+}
+
+export function getLeastCommonPicksContestant(groups, contestants) {
+   const picks = obex(_.keyBy(groups, 'id'))
+     .mapValues(group => getLeastCommonPickInGroup(group, contestants))
+     .raw()
+   return {
+     firstName: 'The',
+     lastName: 'Forsaken',
+     picks,
+     special: true,
+   }
+ }
+
+function getMostCommonPickInGroup(group, contestants) {
+  const groupPicks = group.players || group.teams
+  let maxPickCount = 0
+  let maxPickCountPicks = []
+  groupPicks.forEach(pick => {
+    const pickCount = contestants.filter(
+      contestant => contestant.picks[group.id].id === pick.id,
+    ).length
+    if (pickCount > maxPickCount) {
+      maxPickCountPicks = [pick]
+      maxPickCount = pickCount
+    } else if (pickCount === maxPickCount) {
+      maxPickCountPicks.push(pick)
+    }
+  })
+  return maxPickCountPicks[0]
+}
+
+function getLeastCommonPickInGroup(group, contestants) {
+   const groupPicks = group.players || group.teams
+   let minPickCount = Number.POSITIVE_INFINITY
+   let minPickCountPicks = []
+   groupPicks.forEach(pick => {
+     const pickCount = contestants.filter(
+       contestant => contestant.picks[group.id].id === pick.id,
+     ).length
+     if (pickCount < minPickCount) {
+       minPickCountPicks = [pick]
+       minPickCount = pickCount
+     } else if (pickCount === minPickCount) {
+       minPickCountPicks.push(pick)
+     }
+   })
+   return minPickCountPicks[0]
+ }
+
 export function getBestPickInGroup(group, stats) {
   let maxPoints = -1
   return group.reduce((bestPick, current) => {
@@ -195,7 +255,7 @@ export function getAllTeamAbreviations(stats) {
     .filter(
       (key, entityStats) =>
         entityStats.hasOwnProperty('wins') ||
-        entityStats.hasOwnProperty('losses')
+        entityStats.hasOwnProperty('losses'),
     )
     .raw()
   return Object.keys(teamStats)
@@ -203,7 +263,7 @@ export function getAllTeamAbreviations(stats) {
 
 function calculateTotalPointsForPick(
   { goals = 0, assists = 0, wins = 0, shutouts = 0 },
-  groupName
+  groupName,
 ) {
   if (groupName === 'sc') {
     return wins === 16 ? Scoring.STANLEY_CUP : 0
@@ -219,6 +279,6 @@ function calculateTotalPointsForPick(
 function calculateTotalPointsForContestant(picks) {
   return Object.keys(picks).reduce(
     (sum, groupName) => sum + picks[groupName].points,
-    0
+    0,
   )
 }

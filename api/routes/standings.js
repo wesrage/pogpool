@@ -3,6 +3,8 @@ import { getContestantFromPicks } from '../services/group.service'
 import {
   consolidateDailyStats,
   getBestPicksContestant,
+  getMostCommonPicksContestant,
+  getLeastCommonPicksContestant,
   generateStandings,
   calculateGroupMaximums,
   calculateGroupMinimums,
@@ -29,6 +31,8 @@ export default {
     const consolidatedStats = consolidateDailyStats(dailyStats)
     contestants = [
       ...contestants,
+      getMostCommonPicksContestant(groups, contestants),
+      getLeastCommonPicksContestant(groups, contestants),
       getBestPicksContestant(groups, consolidatedStats),
     ]
     const standings = generateStandings(contestants, consolidatedStats)
@@ -37,7 +41,6 @@ export default {
     const eliminationMap = getEliminationMap(consolidatedStats)
     const activeCountsByGroup = calculateActiveCountMap(
       groups,
-      consolidatedStats,
       eliminationMap
     )
     let decoratedStandings = decorateStandingsPicks(

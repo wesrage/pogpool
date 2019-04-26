@@ -9,21 +9,21 @@ const renderSkaterRow = maxPoints => pick =>
   renderPickRow(
     pick,
     maxPoints,
-    skater => `${skater.firstName} ${skater.lastName}`
+    skater => `${skater.firstName} ${skater.lastName}`,
   )
 
 const renderGoalieRow = maxPoints => pick =>
   renderPickRow(
     pick,
     maxPoints,
-    team => `${team.goalies.map(goalie => goalie.lastName).join('/')}`
+    team => `${team.goalies.map(goalie => goalie.lastName).join('/')}`,
   )
 
 const renderTeamRow = maxPoints => pick =>
-  renderPickRow(
+  pick.pick && renderPickRow(
     pick,
     maxPoints,
-    team => `${team.locationName} ${team.teamName}`
+    team => `${team.locationName} ${team.teamName}`,
   )
 
 const renderPickRow = (item, maxPoints, nameRenderFunction) => (
@@ -41,26 +41,41 @@ const renderPickRow = (item, maxPoints, nameRenderFunction) => (
   />
 )
 
-const Contestant = ({ firstName, lastName, picks, points, maxPoints }) => (
-  <Column xs={12} md={6} lg={4} style={{ marginBottom: '2em' }}>
-    <div id={firstName + lastName} className={style.nameRow}>
-      <span>
-        {firstName} {lastName}
-      </span>
-      <div style={{ float: 'right' }}>{points}</div>
+const Contestant = ({
+  firstName,
+  lastName,
+  picks,
+  points,
+  maxPoints,
+  hideEliminated,
+}) => {
+  const picksToShow = {}
+  for (const groupId in picks) {
+    if (!hideEliminated || !picks[groupId].out) {
+      picksToShow[groupId] = picks[groupId]
+    }
+  }
+  return (
+    <div style={{ marginBottom: '2em', minWidth: 350 }}>
+      <div id={firstName + lastName} className={style.nameRow}>
+        <span>
+          {firstName} {lastName}
+        </span>
+        <div style={{ float: 'right' }}>{points}</div>
+      </div>
+      {getPicksByPosition(picksToShow, 'f').map(renderSkaterRow(maxPoints))}
+      <br />
+      {getPicksByPosition(picksToShow, 'd').map(renderSkaterRow(maxPoints))}
+      <br />
+      {getPicksByPosition(picksToShow, 't').map(renderGoalieRow(maxPoints))}
+      <br />
+      {renderTeamRow(maxPoints)({
+        groupName: 'sc',
+        pick: picksToShow.sc,
+      })}
     </div>
-    {getPicksByPosition(picks, 'f').map(renderSkaterRow(maxPoints))}
-    <br />
-    {getPicksByPosition(picks, 'd').map(renderSkaterRow(maxPoints))}
-    <br />
-    {getPicksByPosition(picks, 't').map(renderGoalieRow(maxPoints))}
-    <br />
-    {renderTeamRow(maxPoints)({
-      groupName: 'sc',
-      pick: picks.sc,
-    })}
-  </Column>
-)
+  )
+}
 
 Contestant.propTypes = {
   firstName: PropTypes.string.isRequired,

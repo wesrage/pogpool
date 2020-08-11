@@ -17,7 +17,7 @@ const FullScreenContainer = styled.div`
 `
 
 const component = (
-  <ThemeProvider theme={Themes.WSH}>
+  <ThemeProvider theme={Themes.STL}>
     <React.Suspense
       fallback={
         <FullScreenContainer>

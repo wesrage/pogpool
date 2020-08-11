@@ -227,7 +227,7 @@ export default [
     id: 'f22',
     players: [
       { id: 8476393, firstName: 'Nick', lastName: 'Cousins', team: 'VGK' },
-      { id: 8477503, firstName: 'Max', lastName: 'Domi', team: 'TML' },
+      { id: 8477503, firstName: 'Max', lastName: 'Domi', team: 'MTL' },
       { id: 8478131, firstName: 'Ondrej', lastName: 'Kase', team: 'BOS' },
       { id: 8477941, firstName: 'Nick', lastName: 'Ritchie', team: 'BOS' },
       { id: 8476438, firstName: 'Brandon', lastName: 'Saad', team: 'CHI' },
@@ -278,7 +278,7 @@ export default [
     players: [
       { id: 8476462, firstName: 'Dougie', lastName: 'Hamilton', team: 'CAR' },
       { id: 8480800, firstName: 'Quinn', lastName: 'Hughes', team: 'VAN' },
-      { id: 8471702, firstName: 'Matt', lastName: 'Niskanen', team: 'WSH' },
+      { id: 8471702, firstName: 'Matt', lastName: 'Niskanen', team: 'PHI' },
       { id: 8479410, firstName: 'Mikhail', lastName: 'Sergachev', team: 'TBL' },
       { id: 8474031, firstName: 'Kevin', lastName: 'Shattenkirk', team: 'TBL' },
     ],
@@ -336,7 +336,7 @@ export default [
   {
     id: 'd9',
     players: [
-      { id: 8474581, firstName: 'Jake', lastName: 'Gardiner', team: 'TOR' },
+      { id: 8474581, firstName: 'Jake', lastName: 'Gardiner', team: 'CAR' },
       { id: 8476891, firstName: 'Matt', lastName: 'Grzelcyk', team: 'BOS' },
       { id: 8477462, firstName: 'Robert', lastName: 'Hagg', team: 'PHI' },
       { id: 8473446, firstName: 'Erik', lastName: 'Johnson', team: 'COL' },
@@ -515,7 +515,7 @@ export default [
         id: 'ARI',
         fullName: 'Arizona Coyotes',
         locationName: 'Arizona',
-        lastName: 'Coyotes',
+        teamName: 'Coyotes',
         goalies: [
           { id: 8475311, firstName: 'Darcy', lastName: 'Kuemper' },
           { id: 8477293, firstName: 'Antti', lastName: 'Raanta' },
@@ -553,7 +553,6 @@ export default [
       },
     ],
   },
-
   {
     id: 'sc',
     teams: [

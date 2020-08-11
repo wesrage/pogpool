@@ -45,8 +45,8 @@ function loadFromStorage(key, defaultValue) {
 
 export default class Picker extends React.Component {
   state = {
-    picks: loadFromStorage('2019-picks', {}),
-    user: loadFromStorage('2019-user', {
+    picks: loadFromStorage('2020-picks', {}),
+    user: loadFromStorage('2020-user', {
       firstName: '',
       lastName: '',
     }),
@@ -138,8 +138,8 @@ export default class Picker extends React.Component {
   }
 
   persist = () => {
-    localStorage.setItem('2019-picks', JSON.stringify(this.state.picks))
-    localStorage.setItem('2019-user', JSON.stringify(this.state.user))
+    localStorage.setItem('2020-picks', JSON.stringify(this.state.picks))
+    localStorage.setItem('2020-user', JSON.stringify(this.state.user))
   }
 
   renderPlayerGroup = ({ id, players }) => (
@@ -181,7 +181,7 @@ export default class Picker extends React.Component {
     return (
       <PickerRoot>
         <Helmet>
-          <title>PuckOverGlass 2019 Stanley Cup Playoff Pool</title>
+          <title>PuckOverGlass 2020 Stanley Cup Playoff Pool</title>
         </Helmet>
         <NotificationSystem
           ref={e => {
@@ -196,7 +196,7 @@ export default class Picker extends React.Component {
             There's no need to complete your picks in one sitting; your browser
             will remember where you left off.
           </p>
-          <p>Submission Deadline: Wednesday, April 10, 2019 @ 7:00 PM EDT</p>
+          <p>Submission Deadline: Tuesday, August 11, 2020 @ 3:00 PM EDT</p>
         </Annotation>
 
         <H1>Your Information</H1>

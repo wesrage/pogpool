@@ -5,8 +5,8 @@ import './index.html'
 import Themes from './common/themes'
 import Spinner from './components/Spinner'
 
-// const Picker = React.lazy(() => import('./pages/Picker/Picker'))
-const Standings = React.lazy(() => import('./pages/Standings/Standings'))
+const Picker = React.lazy(() => import('./pages/Picker/Picker'))
+// const Standings = React.lazy(() => import('./pages/Standings/Standings'))
 
 const FullScreenContainer = styled.div`
   display: flex;
@@ -25,8 +25,8 @@ const component = (
         </FullScreenContainer>
       }
     >
-      <Standings />
-      {/* <Picker /> */}
+      {/* <Standings /> */}
+      <Picker />
     </React.Suspense>
   </ThemeProvider>
 )

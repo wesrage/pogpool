@@ -61,7 +61,7 @@ export default class Standings extends React.Component {
     )
     return (
       <div>
-        <Helmet title="PuckOverGlass 2019" />
+        <Helmet title="PuckOverGlass 2020" />
         <SpinnerContainer loading={this.state.loadingStandings}>
           {() => (
             <div>

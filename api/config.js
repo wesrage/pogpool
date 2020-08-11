@@ -6,7 +6,7 @@ export const WEB_PORT = process.env.WEB_PORT
 export const WEB_HOST = process.env.WEB_HOST
 
 export default {
-  YEAR: 2018,
+  YEAR: 2019,
   SEASON: Seasons.PLAYOFFS,
   PICKER_OPEN: process.env.NODE_ENV !== JSON.stringify('production'),
 }

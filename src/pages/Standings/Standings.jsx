@@ -26,7 +26,7 @@ export default class Standings extends React.Component {
     hideEliminated: false,
   }
 
-  constructor() {
+  componentDidMount() {
     this.loadStandings()
   }
 

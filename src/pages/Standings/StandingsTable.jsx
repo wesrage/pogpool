@@ -49,22 +49,11 @@ const StandingsTable = ({ contestants }) => (
     <StyledTable>
       <Header>
         <TableRow>
-          <Cell colSpan={3} />
-          <CenteredCell borderLeft colSpan={2}>
-            East
-          </CenteredCell>
-          <CenteredCell borderLeft colSpan={2}>
-            West
-          </CenteredCell>
-        </TableRow>
-        <TableRow>
           <Cell>Name</Cell>
           <NumberCell>Points</NumberCell>
           <NumberCell>Active</NumberCell>
-          <NumberCell borderLeft>A</NumberCell>
-          <NumberCell>M</NumberCell>
-          <NumberCell borderLeft>C</NumberCell>
-          <NumberCell>P</NumberCell>
+          <NumberCell borderLeft>East</NumberCell>
+          <NumberCell borderLeft>West</NumberCell>
         </TableRow>
       </Header>
       <Body>
@@ -95,8 +84,6 @@ const NoLinkRow = ({ contestant }) => (
     <NumberCell />
     <NumberCell />
     <NumberCell />
-    <NumberCell />
-    <NumberCell />
   </TableBodyRow>
 )
 
@@ -117,10 +104,8 @@ const ContestantRow = ({ contestant }) => (
         ).length
       }
     </NumberCell>
-    <NumberCell borderLeft>{contestant.breakdown.A || 0}</NumberCell>
-    <NumberCell>{contestant.breakdown.M || 0}</NumberCell>
-    <NumberCell borderLeft>{contestant.breakdown.C || 0}</NumberCell>
-    <NumberCell>{contestant.breakdown.P || 0}</NumberCell>
+    <NumberCell borderLeft>{contestant.breakdown.E || 0}</NumberCell>
+    <NumberCell borderLeft>{contestant.breakdown.W || 0}</NumberCell>
   </TableBodyRow>
 )
 

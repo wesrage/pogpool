@@ -13,7 +13,7 @@ const Headshot = styled.img`
 `
 
 const TileWrapper = styled.div`
-  width: 18%;
+  width: 15%;
 
   .logo {
     @media (max-width: 64em) {
@@ -77,9 +77,9 @@ const AbsoluteLogoWrapper = styled.div`
 
 const Name = styled.span`
   color: #fff;
-  font-size: 0.9em;
+  font-size: 0.8em;
   line-height: 1.25;
-  padding: 0 0.5em;
+  padding-right: 0.5em;
   width: 100%;
   user-select: none;
 
@@ -133,7 +133,7 @@ export default class PlayerTile extends React.Component {
       otherSelected,
     } = this.props
     const fullDisplayName = `${firstName} ${lastName}`
-    const headshotImageUrl = `https://nhl.bamcontent.com/images/headshots/current/168x168/${id}@2x.jpg`
+    const headshotImageUrl = `https://cms.nhl.bamgrid.com/images/headshots/current/168x168/${id}@2x.jpg`
     return (
       <TileWrapper>
         <Tile

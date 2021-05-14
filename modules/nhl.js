@@ -108,6 +108,7 @@ export const teams = {
     abbreviation: 'ANA',
     conference: 'W',
     division: 'P',
+    division2021: 'W',
   },
   ARI: {
     fullName: 'Arizona Coyotes',
@@ -116,6 +117,7 @@ export const teams = {
     abbreviation: 'ARI',
     conference: 'W',
     division: 'P',
+    division2021: 'W',
   },
   BOS: {
     fullName: 'Boston Bruins',
@@ -124,6 +126,7 @@ export const teams = {
     abbreviation: 'BOS',
     conference: 'E',
     division: 'A',
+    division2021: 'E',
   },
   BUF: {
     fullName: 'Buffalo Sabres',
@@ -132,6 +135,7 @@ export const teams = {
     abbreviation: 'BUF',
     conference: 'E',
     division: 'A',
+    division2021: 'E',
   },
   CGY: {
     fullName: 'Calgary Flames',
@@ -140,6 +144,7 @@ export const teams = {
     abbreviation: 'CGY',
     conference: 'W',
     division: 'P',
+    division2021: 'N',
   },
   CAR: {
     fullName: 'Carolina Hurricanes',
@@ -148,6 +153,7 @@ export const teams = {
     abbreviation: 'CAR',
     conference: 'E',
     division: 'M',
+    division2021: 'C',
   },
   CHI: {
     fullName: 'Chicago Blackhawks',
@@ -156,6 +162,7 @@ export const teams = {
     abbreviation: 'CHI',
     conference: 'W',
     division: 'C',
+    division2021: 'C',
   },
   COL: {
     fullName: 'Colorado Avalanche',
@@ -164,6 +171,7 @@ export const teams = {
     abbreviation: 'COL',
     conference: 'W',
     division: 'C',
+    division2021: 'W',
   },
   CBJ: {
     fullName: 'Columbus Blue Jackets',
@@ -172,6 +180,7 @@ export const teams = {
     abbreviation: 'CBJ',
     conference: 'E',
     division: 'M',
+    division2021: 'C',
   },
   DAL: {
     fullName: 'Dallas Stars',
@@ -180,6 +189,7 @@ export const teams = {
     abbreviation: 'DAL',
     conference: 'W',
     division: 'C',
+    division2021: 'C',
   },
   DET: {
     fullName: 'Detroit Red Wings',
@@ -188,6 +198,7 @@ export const teams = {
     abbreviation: 'DET',
     conference: 'E',
     division: 'A',
+    division2021: 'C',
   },
   EDM: {
     fullName: 'Edmonton Oilers',
@@ -196,6 +207,7 @@ export const teams = {
     abbreviation: 'EDM',
     conference: 'W',
     division: 'P',
+    division2021: 'N',
   },
   FLA: {
     fullName: 'Florida Panthers',
@@ -204,6 +216,7 @@ export const teams = {
     abbreviation: 'FLA',
     conference: 'E',
     division: 'A',
+    division2021: 'C',
   },
   LAK: {
     fullName: 'Los Angeles Kings',
@@ -212,6 +225,7 @@ export const teams = {
     abbreviation: 'LAK',
     conference: 'W',
     division: 'P',
+    division2021: 'W',
   },
   MIN: {
     fullName: 'Minnesota Wild',
@@ -220,6 +234,7 @@ export const teams = {
     abbreviation: 'MIN',
     conference: 'W',
     division: 'C',
+    division2021: 'W',
   },
   MTL: {
     fullName: 'Montréal Canadiens',
@@ -228,6 +243,7 @@ export const teams = {
     abbreviation: 'MTL',
     conference: 'E',
     division: 'A',
+    division2021: 'N',
   },
   NSH: {
     fullName: 'Nashville Predators',
@@ -236,6 +252,7 @@ export const teams = {
     abbreviation: 'NSH',
     conference: 'W',
     division: 'C',
+    division2021: 'C',
   },
   NJD: {
     fullName: 'New Jersey Devils',
@@ -244,6 +261,7 @@ export const teams = {
     abbreviation: 'NJD',
     conference: 'E',
     division: 'M',
+    division2021: 'E',
   },
   NYI: {
     fullName: 'New York Islanders',
@@ -252,6 +270,7 @@ export const teams = {
     abbreviation: 'NYI',
     conference: 'E',
     division: 'M',
+    division2021: 'E',
   },
   NYR: {
     fullName: 'New York Rangers',
@@ -260,6 +279,7 @@ export const teams = {
     abbreviation: 'NYR',
     conference: 'E',
     division: 'M',
+    division2021: 'E',
   },
   OTT: {
     fullName: 'Ottawa Senators',
@@ -268,6 +288,7 @@ export const teams = {
     abbreviation: 'OTT',
     conference: 'E',
     division: 'A',
+    division2021: 'N',
   },
   PHI: {
     fullName: 'Philadelphia Flyers',
@@ -276,6 +297,7 @@ export const teams = {
     abbreviation: 'PHI',
     conference: 'E',
     division: 'M',
+    division2021: 'E',
   },
   PIT: {
     fullName: 'Pittsburgh Penguins',
@@ -284,6 +306,7 @@ export const teams = {
     abbreviation: 'PIT',
     conference: 'E',
     division: 'M',
+    division2021: 'E',
   },
   SJS: {
     fullName: 'San Jose Sharks',
@@ -292,6 +315,7 @@ export const teams = {
     abbreviation: 'SJS',
     conference: 'W',
     division: 'P',
+    division2021: 'W',
   },
   STL: {
     fullName: 'St. Louis Blues',
@@ -300,6 +324,7 @@ export const teams = {
     abbreviation: 'STL',
     conference: 'W',
     division: 'C',
+    division2021: 'W',
   },
   TBL: {
     fullName: 'Tampa Bay Lightning',
@@ -308,6 +333,7 @@ export const teams = {
     abbreviation: 'TBL',
     conference: 'E',
     division: 'A',
+    division2021: 'C',
   },
   TOR: {
     fullName: 'Toronto Maple Leafs',
@@ -316,6 +342,7 @@ export const teams = {
     abbreviation: 'TOR',
     conference: 'E',
     division: 'A',
+    division2021: 'N',
   },
   VAN: {
     fullName: 'Vancouver Canucks',
@@ -324,6 +351,7 @@ export const teams = {
     abbreviation: 'VAN',
     conference: 'W',
     division: 'P',
+    division2021: 'N',
   },
   VGK: {
     fullName: 'Vegas Golden Knights',
@@ -332,6 +360,7 @@ export const teams = {
     abbreviation: 'VGK',
     conference: 'W',
     division: 'P',
+    division2021: 'W',
   },
   WSH: {
     fullName: 'Washington Capitals',
@@ -340,6 +369,7 @@ export const teams = {
     abbreviation: 'WSH',
     conference: 'E',
     division: 'M',
+    division2021: 'E',
   },
   WPG: {
     fullName: 'Winnipeg Jets',
@@ -348,5 +378,6 @@ export const teams = {
     abbreviation: 'WPG',
     conference: 'W',
     division: 'C',
+    division2021: 'N',
   },
 }

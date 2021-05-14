@@ -83,7 +83,7 @@
     "webpack-dev-middleware": "^3.7.2"
   },
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "classnames": "^2.2.6",
     "compression": "^1.7.4",
@@ -93,8 +93,8 @@
     "express": "^4.17.1",
     "history": "^4.10.1",
     "http-proxy": "^1.18.1",
-    "immer": "^2.1.5",
-    "lodash": "^4.17.19",
+    "immer": "^9.0.2",
+    "lodash": "^4.17.21",
     "moment": "^2.27.0",
     "monk": "^7.3.0",
     "node-sass": "^4.11.0",

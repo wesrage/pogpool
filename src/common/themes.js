@@ -10,5 +10,9 @@ export default {
   STL: {
     main: '#002654',
     accent: '#fcb514',
+  },
+  TBL: {
+    main: '#002868',
+    accent: '#002868',
   }
 }

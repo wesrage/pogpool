@@ -118,8 +118,10 @@ export async function savePicks(picks) {
       lastName: picks.lastName,
     },
     {
-      ...picks,
-      timestamp: Date.now(),
+      $set: {
+        ...picks,
+        timestamp: Date.now(),
+      },
     },
     {
       upsert: true,

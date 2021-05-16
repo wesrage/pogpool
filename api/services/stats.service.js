@@ -46,7 +46,7 @@ export function generateStandings(contestants, stats) {
 function getBreakdown(picks) {
   return Object.values(picks).reduce((acc, pick) => {
     const team = pick.team || pick.id
-    const division = teams[team].division
+    const division = teams[team].division2021
     // const conference = teams[team].conference
     return {
       ...acc,

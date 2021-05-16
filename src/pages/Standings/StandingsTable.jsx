@@ -86,6 +86,8 @@ const NoLinkRow = ({ contestant }) => (
     <NumberCell />
     <NumberCell />
     <NumberCell />
+    <NumberCell />
+    <NumberCell />
   </TableBodyRow>
 )
 

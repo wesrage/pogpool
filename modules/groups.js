@@ -535,6 +535,7 @@ export default [
         teamName: 'Capitals',
         goalies: [
           { id: 8477970, firstName: 'Vitek', lastName: 'Vanecek' },
+          { id: 8467950, firstName: 'Craig', lastName: 'Anderson' },
           { id: 8478492, firstName: 'Ilya', lastName: 'Samsonov' },
         ],
       },

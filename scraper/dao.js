@@ -25,7 +25,11 @@ export function saveGames(games) {
         {
           id: game.id,
         },
-        game,
+        {
+          $set: {
+            ...game,
+          }
+        },
         {
           upsert: true,
         }

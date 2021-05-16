@@ -52,7 +52,9 @@ const StandingsTable = ({ contestants }) => (
           <Cell>Name</Cell>
           <NumberCell>Points</NumberCell>
           <NumberCell>Active</NumberCell>
+          <NumberCell borderLeft>Central</NumberCell>
           <NumberCell borderLeft>East</NumberCell>
+          <NumberCell borderLeft>North</NumberCell>
           <NumberCell borderLeft>West</NumberCell>
         </TableRow>
       </Header>
@@ -104,7 +106,9 @@ const ContestantRow = ({ contestant }) => (
         ).length
       }
     </NumberCell>
+    <NumberCell borderLeft>{contestant.breakdown.C || 0}</NumberCell>
     <NumberCell borderLeft>{contestant.breakdown.E || 0}</NumberCell>
+    <NumberCell borderLeft>{contestant.breakdown.N || 0}</NumberCell>
     <NumberCell borderLeft>{contestant.breakdown.W || 0}</NumberCell>
   </TableBodyRow>
 )

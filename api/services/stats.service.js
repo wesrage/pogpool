@@ -47,12 +47,12 @@ function getBreakdown(picks) {
   return Object.values(picks).reduce((acc, pick) => {
     const team = pick.team || pick.id
     const division = teams[team].division
-    const conference = teams[team].conference
+    // const conference = teams[team].conference
     return {
       ...acc,
       [team]: (acc[team] || 0) + 1,
       [division]: (acc[division] || 0) + 1,
-      [conference]: (acc[conference] || 0) + 1,
+      // [conference]: (acc[conference] || 0) + 1,
     }
   }, {})
 }
